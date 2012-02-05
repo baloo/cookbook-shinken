@@ -4,5 +4,5 @@
 define contactgroup{
         contactgroup_name                  <%= @cgroup[:id] %>
         alias                              <%= @cgroup[:name] %>
-        email                              <%= @cgroup[:users].join(",") %>
+        members                            <%= @cgroup[:users].join(",") %>
 }
