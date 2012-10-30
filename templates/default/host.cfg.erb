@@ -2,8 +2,13 @@
 # Any local changes will be overwriten
 
 define host{
-        use                     <%= @template %>
-        contact_groups          <%= @contact %>
+        use                     <%= @templates.join(",") %>
+<% if not @contact_groups.empty? %>
+        contact_groups          <%= @contact_groups.join(",") %>
+<% end %>
+<% if not @contacts.empty? %>
+        contacts                <%= @contacts.join(",") %>
+<% end %>
         host_name               <%= @hostname %>
         address                 <%= @address %>
         check_interval          1

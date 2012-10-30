@@ -2,9 +2,16 @@
 # Any local changes will be overwriten
 
 define service{
-        use                             local-service
+        use                             <%= @templates.join(",") %>
         host_name                       <%= @hostname %>
         check_command                   <%= @nagios.first %><%= @nagios.hash %>
-        service_description             <%= @nagios.first %> on <%= @hostname %>
+        service_description             <%= @description %> on <%= @hostname %>
+
+<% if @overrides %>
+<% @overrides.each do |key, value| %>
+        
+        <%= key %>              <%= value %>
+<% end %>
+<% end %>
 }
 
