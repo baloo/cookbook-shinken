@@ -62,7 +62,7 @@ end
 
 # We'll now populate services with real content
 search(:node, "monitoring:*") do |n|
-  n["monitoring"]["checks"].each_pair do |service_key, service|
+  (n["monitoring"]["checks"]|| {}).each_pair do |service_key, service|
     # we'll use shinken_host LWRP to define host
     shinken_service "#{n["fqdn"]}/#{service_key}" do
       host_name n["fqdn"]
