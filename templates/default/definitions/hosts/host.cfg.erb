@@ -1,0 +1,71 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+define host {
+<% if not @register %>
+  name                          <%= @host_key %>
+<% end %>
+
+<% if not @host_name.nil? %>
+  host_name                     <%= @host_name %>
+<% end %>
+<% if not @host_alias.nil? %>
+  alias                         <%= @host_alias %>
+<% end %>
+<% if not @display_name.nil? %>
+  display_name                  <%= @display_name %>
+<% end %>
+<% if not @address.nil? %>
+  address                       <%= @address %>
+<% end %>
+<% if not @hostgroups.nil? %>
+  hostgroups                    <%= @hostgroups.join(",") %>
+<% end %>
+<% if not @check_command.nil? %>
+  check_command                 <%= @check_command %>
+<% end %>
+<% if not @max_check_attempts.nil? %>
+  max_check_attempts            <%= @max_check_attempts %>
+<% end %>
+<% if not @check_interval.nil? %>
+  check_interval                <%= @check_interval %>
+<% end %>
+<% if not @active_checks_enabled.nil? %>
+  active_check_enabled          <%= @active_checks_enabled?"1":"0" %>
+<% end %>
+<% if not @check_period.nil? %>
+  check_period                  <%= @check_period %>
+<% end %>
+<% if not @contact_groups.nil? %>
+  contact_groups                <%= @contact_groups.join(",") %>
+<% end %>
+<% if not @notification_interval.nil? %>
+  notification_interval         <%= @notification_interval %>
+<% end %>
+<% if not @notification_period.nil? %>
+  notification_period           <%= @notification_period %>
+<% end %>
+<% if not @notification_options.nil? %>
+  notification_options          <%= @notification_options.map{|o| o.to_s[0,1]}.join(",") %>
+<% end %>
+<% if not @notifications_enabled.nil? %>
+  notifications_enabled         <%= @notifications_enabled?"1":"0" %>
+<% end %>
+<% if not @event_handler_enabled.nil? %>
+  event_handler_enabled         <%= @event_handler_enabled?"1":"0" %>
+<% end %>
+<% if not @flap_detection_enabled.nil? %>
+  flap_detection_enabled        <%= @flap_detection_enabled?"1":"0" %>
+<% end %>
+<% if not @process_perf_data.nil? %>
+  process_perf_data             <%= @process_perf_data %>
+<% end %>
+
+
+
+  register                      <%= @register ? "1": "0" %>
+
+<% if @use %>
+  use                           <%= @use.join(",") %>
+<% end %>
+}
+

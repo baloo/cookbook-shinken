@@ -1,0 +1,29 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+
+define timeperiod {
+<% if not @register %>
+  name <%= @timeperiod_key %>
+<% end %>
+
+<% if not @timeperiod_alias.nil? %>
+  alias <%= @timeperiod_alias %>
+<% end %>
+<% if not @timeperiod_name.nil? %>
+  timeperiod_name <%= @timeperiod_name %>
+<% end %>
+<% if not @exclude.nil? %>
+  exclude <%= @exclude.join(",") %>
+<% end %>
+<% @content.each do |line| %>
+  <%= line %>
+<% end %>
+
+<% if not @register.nil? %>
+  register <%= @register?"1":"0" %>
+<% end %>
+<% if not @use.nil? %>
+  use <%= @use.join(",") %>
+<% end %>
+}
+

@@ -1,0 +1,26 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+define servicegroup {
+<% if not @register %>
+  name                          <%= @servicegroup_key %>
+<% end %>
+
+<% if not @servicegroup_name.nil? %>
+  servicegroup_name             <%= @servicegroup_name %>
+<% end %>
+<% if not @servicegroup_alias.nil? %>
+  alias                         <%= @servicegroup_alias %>
+<% end %>
+<% if not @notes.nil? %>
+  notes                         <%= @notes %>
+<% end %>
+<% if not @notes_url.nil? %>
+  notes_url                     <%= @notes_url %>
+<% end %>
+
+  register                      <%= @register ? "1": "0" %>
+<% if @use %>
+  use      <%= @use.join(",") %>
+<% end %>
+}
+

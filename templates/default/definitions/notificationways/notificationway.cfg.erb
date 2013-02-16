@@ -1,0 +1,30 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+define notificationway {
+<% if @notificationway_name %>
+  notificationway_name          <%= @notificationway_name %>
+<% end %>
+
+<% if @service_notification_period %>
+  service_notification_period   <%= @service_notification_period %>
+<% end %>
+<% if @host_notification_period %>
+  host_notification_period      <%= @host_notification_period %>
+<% end %>
+
+<% if @service_notification_options %>
+  service_notification_options  <%= @service_notification_options.map{|o| o.to_s[0,1]}.join(",") %>
+<% end %>
+<% if @host_notification_options %>
+  host_notification_options     <%= @host_notification_options.map{|o| o.to_s[0,1]}.join(",") %>
+<% end %>
+
+<% if @service_notification_commands %>
+  service_notification_commands <%= @service_notification_commands %>
+<% end %>
+<% if @host_notification_commands %>
+  host_notification_commands    <%= @host_notification_commands %>
+<% end %>
+}
+
+

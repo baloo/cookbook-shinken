@@ -1,0 +1,38 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+define contact {
+<% if not @register %>
+  name                          <%= @contact_key %>
+<% end %>
+
+<% if @contact_name %>
+  contact_name                  <%= @contact_name %>
+<% end %>
+
+<% if not @contact_alias.nil? %>
+  alias                         <%= @contact_alias %>
+<% end %>
+<% if not @host_notifications_enabled.nil? %>
+  host_notifications_enabled    <%= @host_notifications_enabled ? "1": "0" %>
+<% end %>
+<% if not @service_notifications_enabled.nil? %>
+  service_notifications_enabled <%= @service_notifications_enabled ? "1": "0" %>
+<% end %>
+<% if @email %>
+  email                         <%= @email %>
+<% end %>
+<% if not @can_submit_commands.nil? %>
+  can_submit_commands           <%= @can_submit_commands ? "1": "0" %>
+<% end %>
+<% if not @notificationways.nil? %>
+  notificationways              <%= @notificationways.join(",") %>
+<% end %>
+
+<% if not @use.nil? %>
+  use                           <%= @use.join(",") %>
+<% end %>
+<% if not @register.nil? %>
+  register                      <%= @register ? "1": "0" %>
+<% end %>
+}
+

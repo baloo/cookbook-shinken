@@ -1,0 +1,8 @@
+# This file is handled by chef, any local changes
+# Will be OVERWRITTEN next run
+
+<% @modules.sort.each do |mod| %>
+cfg_file=<%= mod %>
+<% end %>
+
+
