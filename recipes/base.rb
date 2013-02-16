@@ -41,6 +41,8 @@ apt_repository "shinken-dev" do
   distribution "sid"
   components ["main"]
   key "http://shinken.apt.znx.fr/packages@zenexity.com.gpg.key"
+
+  action :add
 end
 
 
