@@ -19,7 +19,7 @@ define contact{
         alias                                   <%= @user[:name] %>
         email                                   <%= @user[:mail] %>
 
-<% if @user[:pager] %>
+<% if @user[:pager] && @user[:oncall] %>
         pager                                   <%= countries[@user[:pager][:country]].call(@user[:pager][:number]) %>
 <% end %>
 }

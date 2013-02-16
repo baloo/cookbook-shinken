@@ -104,14 +104,13 @@ search(:node, "monitoring_elements:*") do |matching_node|
   end
 
   # Handle hostname
-  hostname = matching_node.fqdn
+  hostname = matching_node["fqdn"]
   if matching_node["cloud"] && matching_node["cloud"]["public_hostname"]
     hostname = matching_node["cloud"]["public_hostname"]
   end
   if matching_node["monitoring"] && matching_node["monitoring"]["hostname"]
     hostname = matching_node["monitoring"]["hostname"]
   end
-
 
   # Declare hosts
   template "/etc/shinken/objects/chef/hosts/#{hostname}.cfg" do
