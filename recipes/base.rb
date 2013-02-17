@@ -53,7 +53,10 @@ package "shinken-core"
 
 
 ### Common files
-
+directory "/var/cache/shinken" do
+  owner "nagios"
+  group "nagios"
+end
 
 # On debian we'll need to override /etc/default/shinken file
 if node["platform"] == "debian"
