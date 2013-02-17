@@ -60,12 +60,26 @@ search(:shinken_contact_templates, "*:*") do |n|
   end
 end
 
-search(:users, "shinken:*") do |c|
+search(:users, "*:*") do |c|
   shinken_contact c["id"] do
     register true
 
-    n["shinken"].delete_if{|k,v| k == "id"}.each_pair do |k,v|
+    contact_name c["id"]
+    contact_alias c["name"]
+    email c["mail"]
+
+    (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
       self.send k, v
+    end
+
+    if c["admin"] == true
+      if c["oncall"] == true
+        use ["oncall", "admin"]
+      else
+        use ["admin"]
+      end
+    else
+      use ["generic-contact"]
     end
   end
 end
