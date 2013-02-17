@@ -24,6 +24,9 @@ define contact {
 <% if not @can_submit_commands.nil? %>
   can_submit_commands           <%= @can_submit_commands ? "1": "0" %>
 <% end %>
+<% if not @is_admin.nil? %>
+  is_admin                      <%= @is_admin ? "1": "0" %>
+<% end %>
 <% if not @notificationways.nil? %>
   notificationways              <%= @notificationways.join(",") %>
 <% end %>
