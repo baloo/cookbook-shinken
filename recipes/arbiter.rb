@@ -142,9 +142,11 @@ include_recipe "shinken::arbiter-timeperiods"
 include_recipe "shinken::arbiter-commands"
 include_recipe "shinken::arbiter-notificationways"
 include_recipe "shinken::arbiter-contacts"
+include_recipe "shinken::arbiter-contactgroups"
 include_recipe "shinken::arbiter-hostgroups"
 include_recipe "shinken::arbiter-hosts"
 include_recipe "shinken::arbiter-servicegroups"
+include_recipe "shinken::arbiter-service-dependencies"
 include_recipe "shinken::arbiter-services"
 
 #### Main configuration file
@@ -156,10 +158,12 @@ template "shinken/arbiter/ini" do
   variables({
     :service_files => node.run_state["shinken"]["arbiter"]["services"],
     :servicegroup_files => node.run_state["shinken"]["arbiter"]["servicegroups"],
+    :service_dependency_files => node.run_state["shinken"]["arbiter"]["service-dependencies"],
     :host_files => node.run_state["shinken"]["arbiter"]["hosts"],
     :hostgroup_files => node.run_state["shinken"]["arbiter"]["hostgroups"],
     :command_files => node.run_state["shinken"]["arbiter"]["commands"],
     :contact_files => node.run_state["shinken"]["arbiter"]["contacts"],
+    :contactgroup_files => node.run_state["shinken"]["arbiter"]["contactgroups"],
     :timeperiod_files => node.run_state["shinken"]["arbiter"]["timeperiods"],
     :notiticationway_files => node.run_state["shinken"]["arbiter"]["notificationways"]
   })

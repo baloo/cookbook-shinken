@@ -5,9 +5,12 @@ action :create do
       command new_resource.check_command
       arguments new_resource.arguments
     end
-    Chef::Log.info(command.command_identifier)
   end
 
+  valid_contacts = node.run_state["shinken"]["arbiter"]["valid_contacts"]
+  contacts = (new_resource.contacts || []).reject do |contact|
+    valid_contacts.index(contact).nil?
+  end
 
   template "shinken/arbiter/#{template? ? "templates/": ""}services/#{new_resource.service_key}" do
     path full_path
@@ -46,7 +49,7 @@ action :create do
       :notification_period          => new_resource.notification_period,
       :notification_options         => new_resource.notification_options,
       :notifications_enabled        => new_resource.notifications_enabled,
-      :contacts                     => new_resource.contacts,
+      :contacts                     => contacts,
       :contact_groups               => new_resource.contact_groups,
       :stalking_options             => new_resource.stalking_options,
       :notes                        => new_resource.notes,
@@ -68,6 +71,15 @@ action :create do
 
     action :create
     notifies :restart, "service[shinken-arbiter]", :delayed
+  end
+
+  new_resource.dependencies.each do |dep|
+    shinken_service_dependency "#{dep["hostname"]}-#{dep["service_desc"]}-#{dep["dependent_hostname"]}-#{dep["dependent_service_desc"]}" do
+      hostname                      dep["hostname"]
+      service_description           dep["service_desc"]
+      dependent_hostname            dep["dependent_hostname"]
+      dependent_service_description dep["dependent_service_desc"]
+    end
   end
 
   node.run_state["shinken"]["arbiter"]["services"].push(path)

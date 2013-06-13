@@ -1,0 +1,31 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+define servicedependency {
+<% if not @register %>
+  name                            <%= @key %>
+<% end %>
+
+<% if not @hostname.nil? %>
+  host_name                       <%= @hostname %>
+<% end %>
+<% if not @dependent_hostname.nil? %>
+  dependent_host_name             <%= @dependent_hostname %>
+<% end %>
+
+<% if not @service_description.nil? %>
+  service_description             <%= @service_description %>
+<% end %>
+<% if not @dependent_service_description.nil? %>
+  dependent_service_description   <%= @dependent_service_description  %>
+<% end %>
+
+  inherits_parent                 1
+  execution_failure_criteria      u,c
+  notification_failure_criteria   u,c
+
+  register                      <%= @register ? "1": "0" %>
+<% if @use %>
+  use      <%= @use.join(",") %>
+<% end %>
+}
+

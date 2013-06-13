@@ -10,6 +10,8 @@ define servicegroup {
 <% end %>
 <% if not @servicegroup_alias.nil? %>
   alias                         <%= @servicegroup_alias %>
+<% else %>
+  alias                         <%= @servicegroup_key %>
 <% end %>
 <% if not @notes.nil? %>
   notes                         <%= @notes %>
@@ -17,6 +19,8 @@ define servicegroup {
 <% if not @notes_url.nil? %>
   notes_url                     <%= @notes_url %>
 <% end %>
+
+  members
 
   register                      <%= @register ? "1": "0" %>
 <% if @use %>

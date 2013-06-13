@@ -45,6 +45,7 @@ directory "shinken/arbiter/templates/contacts" do
 end
 
 ### Save content through run
+node.run_state["shinken"]["arbiter"]["valid_contacts"] = []
 node.run_state["shinken"]["arbiter"]["contacts"] = []
 
 # We'll now populate contacts with real content
@@ -60,11 +61,60 @@ search(:shinken_contact_templates, "*:*") do |n|
   end
 end
 
-search(:users, "*:*") do |c|
-  shinken_contact c["id"] do
+search(:users, "zenexity-internal:true") do |c|
+
+  use_contacts = if c["admin"] == true
+    if c["oncall"] == true
+      ["oncall", "admin"]
+    else
+      ["admin"]
+    end
+  else
+    ["generic-contact"]
+  end
+
+
+  if c["pager"] and c["oncall"] == true
+    pager_number = case c["pager"]["country"]
+    when "FR"
+      "+33" + c["pager"]["number"]
+    end
+  else
+    pager_number = nil
+  end
+
+  shinken_contact "#{c["id"]}-all" do
     register true
 
-    contact_name c["id"]
+    contact_name "#{c["id"]}-all"
+    contact_alias c["name"]
+    pager pager_number unless pager_number.nil?
+    email c["mail"]
+
+    (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
+      self.send k, v
+    end
+
+    use use_contacts + ["generic-contact-email-sms"]
+  end
+
+  shinken_contact "#{c["id"]}-sms" do
+    register true
+    contact_name "#{c["id"]}-sms"
+    contact_alias c["name"]
+    pager pager_number unless pager_number.nil?
+
+    (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
+      self.send k, v
+    end
+
+    use use_contacts + ["generic-contact-sms"]
+  end
+
+  shinken_contact "#{c["id"]}-email" do
+    register true
+
+    contact_name "#{c["id"]}-email"
     contact_alias c["name"]
     email c["mail"]
 
@@ -72,15 +122,21 @@ search(:users, "*:*") do |c|
       self.send k, v
     end
 
-    if c["admin"] == true
-      if c["oncall"] == true
-        use ["oncall", "admin"]
-      else
-        use ["admin"]
-      end
-    else
-      use ["generic-contact"]
+
+    use use_contacts + ["generic-contact-email"]
+  end
+
+  shinken_contact c["id"] do
+    register true
+
+    contact_name c["id"]
+    contact_alias c["name"]
+
+    (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
+      self.send k, v
     end
+
+    use use_contacts
   end
 end
 

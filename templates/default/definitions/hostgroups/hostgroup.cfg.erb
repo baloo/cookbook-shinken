@@ -24,6 +24,8 @@ define hostgroup {
   realm                         <%= @realm %>
 <% end %>
 
+  members
+
   register                      <%= @register ? "1": "0" %>
 <% if @use %>
   use      <%= @use.join(",") %>

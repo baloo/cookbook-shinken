@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: shinken
-# Recipe:: poller
+# Recipe:: arbiter-service-dependencies
 #
 # Copyright 2013, Arthur Gautier
 #
@@ -24,21 +24,24 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+## Notificationway definition drop
+# This recipe will drop servicegroups definitions and register them in a main file
 
-package "shinken-poller"
-package "nagios-nrpe-plugin"
+### Include shinken-arbiter recipe
+# See [shinken::arbiter](arbiter.html)
 
-service "shinken-poller" do
-  action [:enable, :start]
+include_recipe "shinken::arbiter"
+
+### Layout
+#### Directories
+#
+# we'll use ``/etc/shinken/objects-chef/servicegroups`` and put subfiles in this 
+directory "shinken/arbiter/service-dependencies" do
+  path "/etc/shinken/objects-chef/service-dependencies"
 end
 
-template "shinken/poller/ini" do
-  path "/etc/shinken/pollerd.ini"
-
-  source "poller/pollerd.ini.erb"
-end
-
-
+### Save content through run
+node.run_state["shinken"]["arbiter"]["service-dependencies"] = []
 
 
 

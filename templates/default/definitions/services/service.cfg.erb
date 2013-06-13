@@ -14,14 +14,18 @@ define service {
   host_name <%= @host_name %>
 <% end %>
 
-<% if not @service_description.nil? %>
+<% if not @service_description.nil? and @service_description.strip() != "" %>
   service_description <%= @service_description %>
+<% else %>
+<% if not @check_command.nil? %>
+  service_description <%= @check_command.command_identifier %>
+<% end %>
 <% end %>
 <% if not @display_name.nil? %>
   display_name <%= @display_name %>
 <% end %>
 <% if not @servicegroups.nil? %>
-  servicegroups <%= @servicegroups.join(",") %>
+  servicegroups <%= @servicegroups.join(", ") %>
 <% end %>
 <% if not @check_command.nil? %>
   check_command <%= @check_command.command_identifier %>

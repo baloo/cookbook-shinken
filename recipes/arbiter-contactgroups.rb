@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: shinken
-# Recipe:: poller
+# Recipe:: arbiter-contactgroups
 #
 # Copyright 2013, Arthur Gautier
 #
@@ -24,20 +24,43 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+## Contact groups definition drop
+# This recipe will drop contactgroups definitions and register them in a main file
 
-package "shinken-poller"
-package "nagios-nrpe-plugin"
+### Include shinken-arbiter recipe
+# See [shinken::arbiter](arbiter.html)
 
-service "shinken-poller" do
-  action [:enable, :start]
+include_recipe "shinken::arbiter"
+
+### Layout
+#### Directories
+#
+# we'll use ``/etc/shinken/objects-chef/contactgroups`` and put subfiles in this 
+directory "shinken/arbiter/contactgroups" do
+  path "/etc/shinken/objects-chef/contactgroups"
 end
 
-template "shinken/poller/ini" do
-  path "/etc/shinken/pollerd.ini"
-
-  source "poller/pollerd.ini.erb"
+directory "shinken/arbiter/templates/contactgroups" do
+  path "/etc/shinken/objects-chef/templates/contactgroups"
 end
 
+### Save content through run
+node.run_state["shinken"]["arbiter"]["contactgroups"] = []
+
+# We'll now populate contacts with real content
+search(:shinken_contact_groups, "*:*") do |n|
+  # we'll use shinken_host LWRP to define host
+  shinken_contactgroup n["id"] do
+    # We wont register templates
+    register true
+
+    contactgroup_name n["id"]
+    contactgroup_alias n["id"]
+
+    members n["users"]
+    contactgroup_members n["subgroups"]
+  end
+end
 
 
 

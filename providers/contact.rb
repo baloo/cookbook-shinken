@@ -41,6 +41,7 @@ action :create do
     notifies :restart, "service[shinken-arbiter]", :delayed
   end
 
+  node.run_state["shinken"]["arbiter"]["valid_contacts"].push(new_resource.contact_name)
   node.run_state["shinken"]["arbiter"]["contacts"].push(path)
 end
 

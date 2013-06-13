@@ -10,8 +10,8 @@ define <%= @daemon_type.to_s %> {
   modules <%= @modules.join(" ") %>
 <% end %>
 
-<% Hash.new(@variables.to_a.sort).each do |key, value| %>
-  <%= key %>  <%= value %>
+<% @variables.keys.sort.each do |key| %>
+  <%= key %>  <%= @variables[key] %>
 <% end %>
 
 }

@@ -21,6 +21,9 @@ define contact {
 <% if @email %>
   email                         <%= @email %>
 <% end %>
+<% if @pager %>
+  pager                         <%= @pager %>
+<% end %>
 <% if not @can_submit_commands.nil? %>
   can_submit_commands           <%= @can_submit_commands ? "1": "0" %>
 <% end %>

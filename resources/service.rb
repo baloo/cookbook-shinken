@@ -69,6 +69,8 @@ attribute :icon_image_alt,               :kind_of => String
 attribute :register,                     :kind_of => [TrueClass, FalseClass], :default => true
 attribute :use,                          :kind_of => Array, :default => []
 
+attribute :dependencies,                 :kind_of => Array, :default => []
+
 
 def initialize(*opts)
   super *opts

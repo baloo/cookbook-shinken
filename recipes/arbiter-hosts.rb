@@ -58,8 +58,13 @@ search(:node, "monitoring:*") do |n|
   shinken_host n["fqdn"] do
     host_name n["fqdn"]
     address n["fqdn"]
+
     (n["monitoring"]["host_definition"]||{}).each_pair do |k, v|
-      self.send k, v
+      if k == "use"
+        self.send k, v.values
+      else
+        self.send k, v
+      end
     end
 
     if (n["monitoring"]["host_definition"]|| {})["use"].nil?

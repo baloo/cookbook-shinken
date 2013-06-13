@@ -172,42 +172,52 @@ local_log=/var/log/shinken/arbiterd.log
 
 # Include chef's defined resources
 ## Hosts
-<% @host_files.each do |hf| %>
+<% @host_files.sort.each do |hf| %>
 cfg_file=objects-chef/<%= hf %>
 <% end %>
 
 ## Hostgroups
-<% @hostgroup_files.each do |hgf| %>
+<% @hostgroup_files.sort.each do |hgf| %>
 cfg_file=objects-chef/<%= hgf %>
 <% end %>
 
 ## Services
-<% @service_files.each do |sf| %>
+<% @service_files.sort.each do |sf| %>
 cfg_file=objects-chef/<%= sf %>
 <% end %>
 
 ## Servicegroups
-<% @servicegroup_files.each do |sgf| %>
+<% @servicegroup_files.sort.each do |sgf| %>
 cfg_file=objects-chef/<%= sgf %>
 <% end %>
 
+## Service-dependencies
+<% @service_dependency_files.sort.each do |sdf| %>
+cfg_file=objects-chef/<%= sdf %>
+<% end %>
+
 ## Commands
-<% @command_files.each do |cf| %>
+<% @command_files.sort.uniq.each do |cf| %>
 cfg_file=objects-chef/<%= cf %>
 <% end %>
 
 ## Contacts
-<% @contact_files.each do |cf| %>
+<% @contact_files.sort.each do |cf| %>
+cfg_file=objects-chef/<%= cf %>
+<% end %>
+
+## Contactgroups
+<% @contactgroup_files.sort.each do |cf| %>
 cfg_file=objects-chef/<%= cf %>
 <% end %>
 
 ## Notification ways
-<% @notiticationway_files.each do |nwf| %>
+<% @notiticationway_files.sort.each do |nwf| %>
 cfg_file=objects-chef/<%= nwf %>
 <% end %>
 
 ## Timeperiods
-<% @timeperiod_files.each do |tpf| %>
+<% @timeperiod_files.sort.each do |tpf| %>
 cfg_file=objects-chef/<%= tpf %>
 <% end %>
 

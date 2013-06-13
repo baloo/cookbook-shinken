@@ -62,7 +62,19 @@ end
 
 # We'll now populate services with real content
 search(:node, "monitoring:*") do |n|
+  Chef::Log.debug("Processing services for #{n["fqdn"]}")
   (n["monitoring"]["checks"]|| {}).each_pair do |service_key, service|
+    # we'll use shinken_host LWRP to define host
+    shinken_service "#{n["fqdn"]}/#{service_key}" do
+      host_name n["fqdn"]
+      service_key service_key
+
+      service.each_pair do |k, v|
+        self.send k, v
+      end
+    end
+  end
+  (n["monitoring"]["checks_manual"]|| {}).each_pair do |service_key, service|
     # we'll use shinken_host LWRP to define host
     shinken_service "#{n["fqdn"]}/#{service_key}" do
       host_name n["fqdn"]
