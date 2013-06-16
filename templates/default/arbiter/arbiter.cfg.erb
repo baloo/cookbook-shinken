@@ -166,7 +166,7 @@ daemon_enabled=1
 
 shinken_user=nagios
 shinken_group=nagios
-lock_file=/var/run/nagios/arbiterd.pid
+lock_file=<%= node['shinken']['run_dir'] %>/arbiterd.pid
 local_log=/var/log/shinken/arbiterd.log
 
 
@@ -210,7 +210,3 @@ cfg_file=objects-chef/<%= nwf %>
 <% @timeperiod_files.each do |tpf| %>
 cfg_file=objects-chef/<%= tpf %>
 <% end %>
-
-
-
-

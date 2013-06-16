@@ -24,6 +24,18 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+case node['platform_family']
+when 'rhel'
+  default["shinken"]["core_package"] = "shinken"
+  default["shinken"]["run_dir"] = "/var/run/shinken"
+  default["shinken"]["work_dir"] = "/var/lib/shinken"
+  default["shinken"]["bin_dir"] = "/usr/sbin"
+else
+  default["shinken"]["core_package"] = "shinken-core"
+  default["shinken"]["run_dir"] = "/var/run/nagios"
+  default["shinken"]["work_dir"] = "/var/lib/nagios"
+  default["shinken"]["bin_dir"] = "/usr/bin"
+end
 
 default["shinken"]["scheduler"  ]["port"] = 7768
 default["shinken"]["reactionner"]["port"] = 7769

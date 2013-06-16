@@ -33,7 +33,9 @@ include_recipe "shinken::broker"
 
 ### Package install
 # For now we only handle debian packages
-package "shinken-webui"
+if node['platform_family'] == "debian"
+  package "shinken-webui"
+end
 
 ### Webui module declaration
 # Store in db

@@ -33,38 +33,32 @@
 # at the end.
 node.run_state["shinken"] = {}
 
-### Packaging
-#### Shinken's repository
-# Shinken resides in its own directory
-apt_repository "shinken-dev" do
-  uri "http://shinken.apt.znx.fr/"
-  distribution "sid"
-  components ["main"]
-  key "http://shinken.apt.znx.fr/packages@zenexity.com.gpg.key"
-
-  action :add
+if node['platform_family'] == "debian"
+  ### Packaging
+  #### Shinken's repository
+  # Shinken resides in its own directory
+  apt_repository "shinken-dev" do
+    uri "http://shinken.apt.znx.fr/"
+    distribution "sid"
+    components ["main"]
+    key "http://shinken.apt.znx.fr/packages@zenexity.com.gpg.key"
+    action :add
+  end
 end
-
 
 #### Package install
 # We'll install core package which contains common files and common
 # configuration
-package "shinken-core"
+package node["shinken"]["core_package"]
 
-
-### Common files
-directory "/var/cache/shinken" do
-  owner "nagios"
-  group "nagios"
+template "shinken/default/debian" do
+  path   "/etc/default/shinken"
+  source "default/shinken.erb"
+  mode   "0644"
 end
 
-# On debian we'll need to override /etc/default/shinken file
-if node["platform"] == "debian"
-  template "shinken/default/debian" do
-    path   "/etc/default/shinken"
-    source "default/shinken.erb"
-    mode   "0644"
-  end
+template "/etc/init.d/shinken" do
+  mode 0755
 end
 
 ### Cleanup
@@ -74,6 +68,15 @@ end
  'reactionnerd-windows.ini',
  'receiverd-windows.ini',
  'schedulerd-windows.ini',
+ 'commands.cfg',
+ 'contactgroups.cfg',
+ 'discovery.cfg',
+ 'discovery_rules.cfg',
+ 'discovery_runs.cfg',
+ 'escalations.cfg',
+ 'servicegroups.cfg',
+ 'templates.cfg',
+ 'timeperiods.cfg',
  'shinken-specific-high-availability.cfg',
  'shinken-specific-load-balanced-only.cfg'].each do |f|
   file ::File.join('/etc/shinken', f) do
@@ -81,3 +84,9 @@ end
   end
 end
 
+directory "/etc/shinken/objects" do
+  action :delete
+  recursive true
+end
+
+cookbook_file "/etc/shinken/resource.cfg"

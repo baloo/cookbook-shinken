@@ -25,17 +25,17 @@
 
 # /etc/default/shinken
 # /etc/shinken is where we put all configuration files
-# /var/lib/nagios is where we put some variables files (replaced by /home/superbaloo/dev/packages/build/shinken-1.2.2/debian/tmp/var/run/nagios and /home/superbaloo/dev/packages/build/shinken-1.2.2/debian/tmp/var/log/shinken for now)
-# /var/run/nagios is where we put pid files
+# <%= node['shinken']['work_dir'] %> is where we put some variables files (replaced by /home/superbaloo/dev/packages/build/shinken-1.2.2/debian/tmp<%= node['shinken']['run_dir'] %> and /home/superbaloo/dev/packages/build/shinken-1.2.2/debian/tmp/var/log/shinken for now)
+# <%= node['shinken']['run_dir'] %> is where we put pid files
 # /var/log/shinken is where we put log files
 # /usr/bin is where the launch scripts will be send
 
 
 ## These vars will override the hardcoded ones in init script ##
 ETC=/etc/shinken
-VAR=/var/lib/nagios
-BIN=/usr/bin
-RUN=/var/run/nagios
+VAR=<%= node['shinken']['work_dir'] %>
+BIN=<%= node['shinken']['bin_dir'] %>
+RUN=<%= node['shinken']['run_dir'] %>
 LOG=/var/log/shinken
 
 

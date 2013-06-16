@@ -33,10 +33,8 @@
 include_recipe "shinken::base"
 
 ### Package install
-# For now we only handle debian packages
 
 package "shinken-arbiter"
-
 
 ### Layout
 #### Directories
@@ -168,6 +166,12 @@ template "shinken/arbiter/ini" do
   notifies :restart, "service[shinken-arbiter]", :delayed
 end
 
+if node[:platform] == "centos"
+  cookbook_file "/etc/init.d/shinken-arbiter" do
+    mode "0755"
+  end
+end
+
 ### Service stuff
 # Declare arbiter service
 service "shinken-arbiter" do
@@ -175,8 +179,7 @@ service "shinken-arbiter" do
   action [:enable, :start]
 
   # If ``/etc/default/shinken`` is changed, we'll restart
-  subscribes :restart, "template[shinken/default/debian]", :delayed \
-    if node["platform"] == "debian"
+  subscribes :restart, "template[shinken/default/debian]", :delayed
 end
 
 

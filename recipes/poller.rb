@@ -24,8 +24,13 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-
 package "shinken-poller"
+
+if node[:platform] == "centos"
+  cookbook_file "/etc/init.d/shinken-poller" do
+    mode "0755"
+  end
+end
 
 service "shinken-poller" do
   action [:enable, :start]
@@ -33,7 +38,6 @@ end
 
 template "shinken/poller/ini" do
   path "/etc/shinken/pollerd.ini"
-
   source "poller/pollerd.ini.erb"
 end
 

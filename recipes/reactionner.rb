@@ -24,8 +24,13 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-
 package "shinken-reactionner"
+
+if node[:platform] == "centos"
+  cookbook_file "/etc/init.d/shinken-reactionner" do
+    mode "0755"
+  end
+end
 
 service "shinken-reactionner" do
   action [:enable, :start]
@@ -33,10 +38,5 @@ end
 
 template "shinken/reactionner/ini" do
   path "/etc/shinken/reactionnerd.ini"
-
   source "reactionner/reactionnerd.ini.erb"
 end
-
-
-
-

@@ -47,5 +47,5 @@ max_queue_size=100000
 
 user=nagios
 group=nagios
-workdir=/var/lib/nagios
-pidfile=/var/run/nagios/brokerd.pid
+workdir=<%= node['shinken']['work_dir'] %>
+pidfile=<%= node['shinken']['run_dir'] %>/brokerd.pid

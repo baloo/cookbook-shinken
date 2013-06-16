@@ -33,5 +33,5 @@ log_level=WARNING
 
 user=nagios
 group=nagios
-workdir=/var/lib/nagios
-pidfile=/var/run/nagios/receiverd.pid
+workdir=<%= node['shinken']['work_dir'] %>
+pidfile=<%= node['shinken']['run_dir'] %>/receiverd.pid

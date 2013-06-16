@@ -24,8 +24,13 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-
 package "shinken-receiver"
+
+if node[:platform] == "centos"
+  cookbook_file "/etc/init.d/shinken-receiver" do
+    mode "0755"
+  end
+end
 
 service "shinken-receiver" do
   action [:enable, :start]
@@ -33,7 +38,6 @@ end
 
 template "shinken/receiver/ini" do
   path "/etc/shinken/receiverd.ini"
-
   source "receiver/receiverd.ini.erb"
 end
 

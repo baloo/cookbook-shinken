@@ -37,20 +37,24 @@ include_recipe "shinken::base"
 package "shinken-broker"
 
 ### Service stuff
+if node[:platform] == "centos"
+  cookbook_file "/etc/init.d/shinken-broker" do
+    mode "0755"
+  end
+end
+
 # Declare broker service
 service "shinken-broker" do
   # Ensure it is started by default and running
   action [:enable, :start]
 
   # If ``/etc/default/shinken`` is changed, we'll restart
-  subscribes :restart, "template[shinken/default/debian]", :delayed \
-    if node["platform"] == "debian"
+  subscribes :restart, "template[shinken/default/debian]", :delayed
 end
 
 ### Configuration files
 template "shinken/broker/ini" do
   path "/etc/shinken/brokerd.ini"
-
   source "broker/brokerd.ini.erb"
 end
 
