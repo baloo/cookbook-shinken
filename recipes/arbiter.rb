@@ -84,15 +84,9 @@ node.run_state["shinken"]["arbiter"]["modules"] = []
       port n["shinken"][daemon.to_s]["port"]
 
       variables n["shinken"][daemon.to_s]["variables"]
+      modules   n["shinken"][daemon.to_s]["modules"]
     end
 
-    (n["shinken"][daemon.to_s]["modules"] || {}).each_pair do |k, v|
-      shinken_module k do
-        module_type v["type"].to_sym
-        variables   v["variables"]
-        modules     v["modules"] || []
-      end
-    end
   end
 end
 

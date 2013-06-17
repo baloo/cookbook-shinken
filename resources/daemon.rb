@@ -13,6 +13,7 @@ attribute :daemon_type, :required => true, :callbacks => {
 }
 
 attribute :variables, :kind_of => Hash
+attribute :modules, :kind_of => Array
 
 attribute :address, :kind_of => String, :required => true
 attribute :port, :kind_of => Integer, :required => true

@@ -7,6 +7,7 @@ action :create do
     variables({
       "daemon_type" => new_resource.daemon_type,
       "variables"   => new_resource.variables,
+      "modules"     => new_resource.modules,
       "address"     => new_resource.address,
       "port"        => new_resource.port,
       "name"        => new_resource.name

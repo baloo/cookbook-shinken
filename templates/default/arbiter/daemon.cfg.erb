@@ -7,10 +7,10 @@ define <%= @daemon_type.to_s %> {
   port    <%= @port %>
 
 <% if @modules %>
-  modules <%= @modules.join(" ") %>
+  modules <%= @modules.join(", ") %>
 <% end %>
 
-<% Hash.new(@variables.to_a.sort).each do |key, value| %>
+<% @variables.to_a.sort.each do |key, value| %>
   <%= key %>  <%= value %>
 <% end %>
 
