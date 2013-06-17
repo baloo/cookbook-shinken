@@ -1,0 +1,11 @@
+{
+  "id": "nrpe",
+  "use": ["generic-service"],
+  "service_description": "NRPE",
+  "servicegroups": ["NRPE"],
+  "hostgroup_name": "linux",
+  "check_command": "check_nrpe",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_dummy"]
+}
+

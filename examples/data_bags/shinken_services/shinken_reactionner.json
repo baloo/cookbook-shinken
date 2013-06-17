@@ -1,0 +1,12 @@
+{
+  "id": "shinken_reactionner",
+  "use": ["generic-service"],
+  "service_description": "Shinken reactionner",
+  "servicegroups": ["Shinken"],
+  "hostgroup_name": "shinken",
+  "service_dependencies": ",Shinken arbiter",
+  "check_command": "check_shinken_reactionner",
+  "command_line": "$USER1$/check_shinken.py",
+  "arguments": ["-a", "$HOSTADDRESS$", "-t", "reactionner"]
+}
+

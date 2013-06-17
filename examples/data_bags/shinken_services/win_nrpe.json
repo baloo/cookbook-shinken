@@ -1,0 +1,11 @@
+{
+  "id": "win_nrpe",
+  "use": ["generic-service"],
+  "service_description": "NRPE",
+  "servicegroups": ["NRPE"],
+  "hostgroup_name": "windows",
+  "check_command": "check_win_nrpe",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$"]
+}
+

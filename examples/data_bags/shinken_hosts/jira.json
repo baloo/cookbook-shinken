@@ -1,0 +1,8 @@
+{
+  "id": "jira",
+  "host_name": "jira",
+  "address": " 1.2.3.5",
+  "host_alias": "jira.example.com",
+  "hostgroups": ["+prod", "mysql-master", "mysql", "jira"],
+  "use": ["no-chef-host","centos-host","generic-host"]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "deployment",
+  "comment": "Deployment User",
+  "email": "deployment@example.com",
+  "groups": ["deployment"],
+  "use": ["deployment-contact"]
+}

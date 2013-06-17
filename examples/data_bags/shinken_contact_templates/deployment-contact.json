@@ -1,0 +1,10 @@
+{
+  "id": "deployment-contact",
+  "use": ["generic-contact"],
+  "host_notifications_enabled": true,
+  "service_notifications_enabled": true,
+  "email": "deployment@exampl.com",
+  "notificationways": ["email"],
+  "is_admin": false,
+  "register": false
+}

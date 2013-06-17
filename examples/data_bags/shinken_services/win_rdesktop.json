@@ -1,0 +1,11 @@
+{
+  "id": "win_rdesktop",
+  "use": ["generic-service"],
+  "service_description": "Remote desktop",
+  "servicegroups": ["Remote desktop"],
+  "hostgroup_name": "windows",
+  "check_command": "check_rdesktop",
+  "command_line": "$PLUGINSDIR$/check_tcp",
+  "arguments": ["-H", "$HOSTADDRESS$", "-p", "3389"]
+}
+

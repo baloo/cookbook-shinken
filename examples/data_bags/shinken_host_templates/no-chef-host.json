@@ -1,0 +1,6 @@
+{
+  "id": "no-chef-host",
+  "hostgroups": ["+no_chef", "monitoring"],
+  "use": ["generic-host"],
+  "register": false
+}

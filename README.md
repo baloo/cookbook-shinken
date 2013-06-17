@@ -36,6 +36,24 @@ There is a number of roles which are available to you:
  - ``shinken-poller``
  - ``shinken-scheduler``
 
+To use the recipes, you must create the following data bags:
+
+shinken_commands
+shinken_contacts
+shinken_contact_templates
+shinken_escalations
+shinken_hostgroups
+shinken_hosts
+shinken_host_templates
+shinken_modules
+shinken_notificationways
+shinken_servicegroups
+shinken_services
+shinken_service_templates
+shinken_timeperiods
+
+See the examples directory for example roles and data bag entries.
+
 ## License and author
 
 Copyright 2013, Arthur Gautier

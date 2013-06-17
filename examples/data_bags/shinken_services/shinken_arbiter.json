@@ -1,0 +1,11 @@
+{
+  "id": "shinken_arbiter",
+  "use": ["generic-service"],
+  "service_description": "Shinken arbiter",
+  "servicegroups": ["Shinken"],
+  "hostgroup_name": "shinken",
+  "check_command": "check_shinken_arbiter",
+  "command_line": "$USER1$/check_shinken.py",
+  "arguments": ["-a", "$HOSTADDRESS$", "-t", "arbiter"]
+}
+

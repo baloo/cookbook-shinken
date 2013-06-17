@@ -1,0 +1,14 @@
+{
+  "id": "WebUI",
+  "type": "webui",
+  "variables": {
+    "host": "0.0.0.0",
+    "port": "7767",
+    "auth_secret": "put your secret here!",
+    "allow_html_output": "0",
+    "max_output_length": "100",
+    "manage_acl": "1",
+    "play_sound": "0"
+  },
+  "modules": ["Apache_passwd", "Mongodb", "PNP_UI"]
+}

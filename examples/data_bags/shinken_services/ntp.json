@@ -1,0 +1,11 @@
+{
+  "id": "ntp",
+  "use": ["generic-service"],
+  "service_description": "NTP",
+  "servicegroups": ["NTP"],
+  "hostgroup_name": "linux,!wiki",
+  "check_command": "check_ntp",
+  "command_line": "$PLUGINSDIR$/check_ntp_time",
+  "arguments": ["-H", "$HOSTADDRESS$", "-w", "30", "-c", "60"]
+}
+

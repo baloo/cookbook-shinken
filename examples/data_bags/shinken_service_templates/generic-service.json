@@ -1,0 +1,25 @@
+{
+  "id": "generic-service",
+  "contact_groups": ["sysadmin"],
+  "active_checks_enabled": true,
+  "passive_checks_enabled": true,
+  "check_interval": 5,
+  "retry_interval": 2,
+  "max_check_attempts": 5,
+  "check_period": "24x7",
+  "notifications_enabled": true,
+  "notification_options": ["warning", "unknown", "critical", "recovery"],
+  "notification_interval": 60,
+  "notification_period": "24x7",
+  "event_handler_enabled": true,
+  "flap_detection_enabled": true,
+  "check_freshness": false,
+  "freshness_threshold": 3600,
+  "obsess_over_service": false,
+  "process_perf_data": true,
+  "is_volatile": false,
+  "notes_url": "/pnp4nagios/index.php/graph?host=$HOSTNAME$&srv=$SERVICEDESC$",
+  "escalations": "deployment_email",
+  "register": false
+}
+

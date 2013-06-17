@@ -1,0 +1,11 @@
+{
+  "id": "mailq",
+  "use": ["generic-service"],
+  "service_description": "Mail queue",
+  "servicegroups": ["Mail queue"],
+  "hostgroup_name": "base",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_mailq",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_mailq"]
+}

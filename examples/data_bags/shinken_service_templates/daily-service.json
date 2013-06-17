@@ -1,0 +1,11 @@
+{
+  "id": "daily-service",
+  "use": ["generic-service"],
+  "notification_interval": 1440,
+  "check_interval": 1440,
+  "retry_interval": 60,
+  "max_check_attempts": 2,
+  "check_period": "work_hours",
+  "register": false
+}
+

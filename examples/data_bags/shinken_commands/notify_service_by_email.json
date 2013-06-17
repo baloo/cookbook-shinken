@@ -1,0 +1,6 @@
+{
+  "id": "notify_service_by_email",
+  "command_name": "notify_service_by_email",
+  "command": "/usr/bin/printf",
+  "arguments": [ "\"%b\"", "\"Shinken Notification\\n\\nNotification Type: $NOTIFICATIONTYPE$\\n\\nService: $SERVICEDESC$\\nHost: $HOSTALIAS$\\nAddress: $HOSTADDRESS$\\nState: $SERVICESTATE$\\n\\nDate/Time: $DATE$ Additional Info : $SERVICEOUTPUT$\\n\"", "|", "/bin/mail", "-s", "\"** $NOTIFICATIONTYPE$ alert - $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **\" $CONTACTEMAIL$"]
+}

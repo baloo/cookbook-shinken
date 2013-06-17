@@ -1,0 +1,12 @@
+{
+  "id": "load",
+  "use": ["generic-service"],
+  "service_description": "CPU load",
+  "servicegroups": ["CPU load"],
+  "hostgroup_name": "linux",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_load",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_load"]
+}
+

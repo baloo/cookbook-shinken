@@ -1,0 +1,11 @@
+{
+  "id": "dns",
+  "use": ["generic-service"],
+  "service_description": "DNS",
+  "servicegroups": ["DNS"],
+  "hostgroup_name": "linux",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_dns",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_dns"]
+}

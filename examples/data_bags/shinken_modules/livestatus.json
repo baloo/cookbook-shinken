@@ -1,0 +1,9 @@
+{
+  "id": "Livestatus",
+  "type": "livestatus",
+  "variables": {
+    "host": "*",
+    "port": "50000"
+  },
+  "modules": ["mongologs"]
+}

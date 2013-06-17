@@ -1,0 +1,11 @@
+{
+  "id": "https",
+  "use": ["generic-service"],
+  "service_description": "HTTPS",
+  "servicegroups": ["HTTPS"],
+  "hostgroup_name": "chef_server,jira",
+  "check_command": "check_https",
+  "command_line": "$PLUGINSDIR$/check_http",
+  "arguments": ["-H", "$HOSTADDRESS$", "-S", "-u", "/monitor-ignore", "-e", "404,301"]
+}
+

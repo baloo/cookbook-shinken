@@ -1,0 +1,12 @@
+{
+  "id": "win_mem",
+  "use": ["generic-service"],
+  "service_description": "Free memory",
+  "servicegroups": ["Memory"],
+  "hostgroup_name": "windows",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_win_mem",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "alias_mem"]
+}
+

@@ -1,0 +1,9 @@
+{
+  "id": "xmpp",
+  "service_notification_period": "24x7",
+  "host_notification_period": "24x7",
+  "service_notification_options": ["warning", "unknown", "critical", "recovery"],
+  "host_notification_options": ["down", "unreachable", "recovery", "flapping"],
+  "service_notification_commands": "notify_service_by_xmpp",
+  "host_notification_commands": "notify_host_by_xmpp"
+}

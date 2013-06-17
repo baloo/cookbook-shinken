@@ -1,0 +1,12 @@
+{
+  "id": "procs",
+  "use": ["generic-service"],
+  "service_description": "Running processes",
+  "servicegroups": ["Running processes"],
+  "hostgroup_name": "linux",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_procs",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_procs"]
+}
+

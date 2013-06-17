@@ -1,0 +1,8 @@
+{
+  "id": "tomcat",
+  "host_name": "tomcat",
+  "address": "1.2.3.8",
+  "host_alias": "tomcat.example.com",
+  "hostgroups": ["+prod", "example.com", "tomcat"],
+  "use": ["no-chef-host","centos-host","generic-host"]
+}

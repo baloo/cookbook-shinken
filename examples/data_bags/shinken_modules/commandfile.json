@@ -1,0 +1,7 @@
+{
+  "id": "CommandFile",
+  "type": "named_pipe",
+  "variables": {
+    "command_file": "rw/nagios.cmd"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "shinken_scheduler",
+  "use": ["generic-service"],
+  "service_description": "Shinken scheduler",
+  "servicegroups": ["Shinken"],
+  "hostgroup_name": "shinken",
+  "service_dependencies": ",Shinken arbiter",
+  "check_command": "check_shinken_scheduler",
+  "command_line": "$USER1$/check_shinken.py",
+  "arguments": ["-a", "$HOSTADDRESS$", "-t", "scheduler"]
+}
+

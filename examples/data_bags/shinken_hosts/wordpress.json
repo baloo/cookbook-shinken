@@ -1,0 +1,8 @@
+{
+  "id": "wordpress",
+  "host_name": "wordpress",
+  "address": "1.2.3.6",
+  "host_alias": "wordpress.example.com",
+  "hostgroups": ["+prod", "mysql-master", "wordpress"],
+  "use": ["no-chef-host","centos-host","generic-host"]
+}

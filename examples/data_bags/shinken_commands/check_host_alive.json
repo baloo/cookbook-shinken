@@ -1,0 +1,7 @@
+{
+  "id": "check_host_alive",
+  "command_name": "check_host_alive",
+  "command": "$PLUGINSDIR$/check_ping",
+  "arguments": ["-H", "$HOSTADDRESS$", "-w", "1000,100%", "-c", "3000,100%", "-p", "1"]
+}
+

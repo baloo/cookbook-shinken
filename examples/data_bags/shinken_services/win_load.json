@@ -1,0 +1,12 @@
+{
+  "id": "win_load",
+  "use": ["generic-service"],
+  "service_description": "CPU load",
+  "servicegroups": ["CPU load"],
+  "hostgroup_name": "windows",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_win_load",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "alias_cpu"]
+}
+

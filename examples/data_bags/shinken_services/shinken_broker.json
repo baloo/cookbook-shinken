@@ -1,0 +1,12 @@
+{
+  "id": "shinken_broker",
+  "use": ["generic-service"],
+  "service_description": "Shinken broker",
+  "servicegroups": ["Shinken"],
+  "hostgroup_name": "shinken",
+  "service_dependencies": ",Shinken arbiter",
+  "check_command": "check_shinken_broker",
+  "command_line": "$USER1$/check_shinken.py",
+  "arguments": ["-a", "$HOSTADDRESS$", "-t", "broker"]
+}
+

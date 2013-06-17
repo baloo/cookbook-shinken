@@ -1,0 +1,13 @@
+{
+  "id": "win_updates",
+  "use": ["daily-service"],
+  "service_description": "Windows updates",
+  "servicegroups": ["Windows updates"],
+  "hostgroup_name": "windows",
+  "service_dependencies": ",NRPE",
+  "escalations": "null",
+  "check_command": "check_win_updates",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "alias_updates", "-t", "60"]
+}
+

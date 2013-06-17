@@ -1,0 +1,11 @@
+{
+  "id": "http",
+  "use": ["generic-service"],
+  "service_description": "HTTP",
+  "servicegroups": ["HTTP"],
+  "hostgroup_name": "shinken,chef_server,wordpress,wiki,bi",
+  "check_command": "check_http",
+  "command_line": "$PLUGINSDIR$/check_http",
+  "arguments": ["-H", "$HOSTADDRESS$", "-u", "/monitor-ignore", "-e", "404,301,302"]
+}
+

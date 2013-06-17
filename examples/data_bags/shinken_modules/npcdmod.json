@@ -1,0 +1,7 @@
+{
+  "id": "NPCDMOD",
+  "type": "npcdmod",
+  "variables": {
+    "config_file": "/etc/pnp4nagios/npcd.cfg"
+  }
+}

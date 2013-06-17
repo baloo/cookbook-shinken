@@ -1,0 +1,20 @@
+{
+  "id": "generic-host",
+  "hostgroups": ["+all"],
+  "check_command": "check_host_alive",
+  "max_check_attempts": 2,
+  "check_interval": 5,
+  "active_checks_enabled": true,
+  "check_period": "24x7",
+  "contact_groups": ["sysadmin"],
+  "notification_interval": 60,
+  "notification_period": "24x7",
+  "notification_options": ["down", "unreachable", "recovery", "flapping"],
+  "notifications_enabled": true,
+  "event_handler_enabled": true,
+  "flap_detection_enabled": true,
+  "process_perf_data": true,
+  "notes_url": "/pnp4nagios/index.php/graph?host=$HOSTNAME$&srv=_HOST_",
+  "escalations": "deployment_email",
+  "register": false
+}

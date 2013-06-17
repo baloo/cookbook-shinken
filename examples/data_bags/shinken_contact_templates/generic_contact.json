@@ -1,0 +1,11 @@
+{
+  "id": "generic-contact",
+  "host_notifications_enabled": false,
+  "service_notifications_enabled": false,
+  "email": "root@localhost",
+  "can_submit_commands": false,
+  "notificationways": ["email"],
+  "contactgroups": "+all",
+  "is_admin": true,
+  "register": false
+}

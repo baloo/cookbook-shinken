@@ -1,0 +1,6 @@
+{
+  "id": "notify_host_by_email",
+  "command_name": "notify_host_by_email",
+  "command": "/usr/bin/printf",
+  "arguments": [ "\"%b\"", "\"Shinken Notification\\n\\nType:$NOTIFICATIONTYPE$\\nHost: $HOSTNAME$\\nState: $HOSTSTATE$\\nAddress: $HOSTADDRESS$\\nInfo: $HOSTOUTPUT$\\nDate/Time: $DATE$\\n\"", "|", "/bin/mail", "-s", "\"Host $HOSTSTATE$ alert for $HOSTNAME$!\" $CONTACTEMAIL$"]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "work_hours",
+  "timeperiod_name": "work_hours",
+  "timeperiod_alias": "Work hours",
+  "content": ["monday    10:00-20:00", "tuesday   10:00-20:00", "wednesday 10:00-20:00", "thursday  10:00-20:00", "friday    10:00-20:00"] 
+}

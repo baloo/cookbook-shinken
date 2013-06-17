@@ -1,0 +1,7 @@
+{
+  "id": "Apache_passwd",
+  "type": "passwd_webui",
+  "variables": {
+    "passwd": "/etc/shinken/htpasswd.users"
+  }
+}

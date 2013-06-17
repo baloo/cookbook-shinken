@@ -1,0 +1,12 @@
+{
+  "id": "disk",
+  "use": ["generic-service"],
+  "service_description": "Free disk space",
+  "servicegroups": ["Disk"],
+  "hostgroup_name": "linux",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_disk",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_disk"]
+}
+

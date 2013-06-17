@@ -1,0 +1,8 @@
+{
+  "id": "windows",
+  "host_name": "windows",
+  "address": "1.2.3.7",
+  "host_alias": "windows.example.com",
+  "hostgroups": ["+prod", "bi"],
+  "use": ["no-chef-host","windows-host","generic-host"]
+}

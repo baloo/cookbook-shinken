@@ -1,0 +1,8 @@
+{
+  "id": "Mongodb",
+  "type": "mongodb",
+  "variables": {
+    "uri": "mongodb://localhost/?safe=true",
+    "database": "shinken"
+  }
+}

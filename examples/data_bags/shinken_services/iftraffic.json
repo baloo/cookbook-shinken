@@ -1,0 +1,11 @@
+{
+  "id": "iftraffic",
+  "use": ["generic-service"],
+  "service_description": "Network traffic",
+  "servicegroups": ["Network traffic"],
+  "hostgroup_name": "linux",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_iftraffic",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_iftraffic"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "swap",
+  "use": ["generic-service"],
+  "service_description": "Free swap",
+  "servicegroups": ["Swap"],
+  "hostgroup_name": "linux",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_swap",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_swap"]
+}
+

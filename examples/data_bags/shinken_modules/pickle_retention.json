@@ -1,0 +1,7 @@
+{
+  "id": "PickleRetention",
+  "type": "pickle_retention_file_generic",
+  "variables": {
+    "path": "/tmp/retention.dat"
+  }
+}

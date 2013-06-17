@@ -1,0 +1,7 @@
+{
+  "id": "PNP_UI",
+  "type": "pnp_webui",
+  "variables": {
+    "uri": "http://mysite.example.com/pnp4nagios/"
+  }
+}

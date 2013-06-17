@@ -1,0 +1,9 @@
+{
+  "id": "sysadmin_email",
+  "first_notification_time": 60,
+  "last_notification_time": 0,
+  "notification_interval": 60,
+  "escalation_period": "24x7",
+  "escalation_options": ["warning", "unknown", "critical", "recovery"],
+  "contact_groups": ["sysadmin"]
+} 

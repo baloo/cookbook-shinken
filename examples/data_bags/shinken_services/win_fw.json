@@ -1,0 +1,12 @@
+{
+  "id": "win_fw",
+  "use": ["generic-service"],
+  "service_description": "Windows Firewall",
+  "servicegroups": ["Firewall"],
+  "hostgroup_name": "windows",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_win_fw",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "alias_win_firewall"]
+}
+

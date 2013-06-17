@@ -1,0 +1,7 @@
+{
+  "id": "mongologs",
+  "type": "logstore_mongodb",
+  "variables": {
+    "mongodb_uri": "mongodb://localhost/?safe=true"
+  }
+}

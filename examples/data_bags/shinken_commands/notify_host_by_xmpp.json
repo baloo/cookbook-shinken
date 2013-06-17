@@ -1,0 +1,6 @@
+{
+  "id": "notify_host_by_xmpp",
+  "command_name": "notify_host_by_xmpp",
+  "command": "/usr/local/bin/xmppsend",
+  "arguments": ["-a", "/usr/local/etc/xmppsend.ini", "\"$NOTIFICATIONTYPE$: Host '$HOSTNAME$' is $HOSTSTATE$: $HOSTOUTPUT$\"", "$CONTACTPAGER$"]
+}

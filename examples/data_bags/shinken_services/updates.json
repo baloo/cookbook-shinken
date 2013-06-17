@@ -1,0 +1,13 @@
+{
+  "id": "updates",
+  "use": ["daily-service"],
+  "service_description": "Yum security updates",
+  "servicegroups": ["Yum security updates"],
+  "hostgroup_name": "centos,!no_chef",
+  "service_dependencies": ",NRPE",
+  "escalations": "null",
+  "check_command": "check_updates",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_updates", "-t", "60"]
+}
+

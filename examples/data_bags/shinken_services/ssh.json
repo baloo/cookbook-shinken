@@ -1,0 +1,11 @@
+{
+  "id": "ssh",
+  "use": ["generic-service"],
+  "service_description": "SSH",
+  "servicegroups": ["SSH"],
+  "hostgroup_name": "linux",
+  "check_command": "check_ssh",
+  "command_line": "$PLUGINSDIR$/check_ssh",
+  "arguments": ["-H", "$HOSTADDRESS$"]
+}
+

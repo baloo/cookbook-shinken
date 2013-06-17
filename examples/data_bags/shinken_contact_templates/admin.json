@@ -1,0 +1,11 @@
+{
+  "id": "admin",
+  "use": ["generic-contact"],
+  "host_notifications_enabled": true,
+  "service_notifications_enabled": true,
+  "email": "sitealerts@example.com",
+  "can_submit_commands": true,
+  "notificationways": ["xmpp"],
+  "is_admin": true,
+  "register": false
+}

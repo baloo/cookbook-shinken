@@ -1,0 +1,7 @@
+{
+  "id": "PickleRetentionBroker",
+  "type": "pickle_retention_file_generic",
+  "variables": {
+    "path": "/var/tmp/retention_broker.dat"
+  }
+}

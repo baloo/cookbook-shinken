@@ -1,0 +1,6 @@
+{
+  "id": "client-contact",
+  "use": ["generic-contact"],
+  "is_admin": false,
+  "register": false
+}

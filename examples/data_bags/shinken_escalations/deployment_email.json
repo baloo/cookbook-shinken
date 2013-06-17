@@ -1,0 +1,9 @@
+{
+  "id": "deployment_email",
+  "first_notification_time": 30,
+  "last_notification_time": 0,
+  "notification_interval": 60,
+  "escalation_period": "24x7",
+  "escalation_options": [ "critical", "recovery"],
+  "contact_groups": ["deployment"]
+} 

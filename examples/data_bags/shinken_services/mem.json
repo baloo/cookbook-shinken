@@ -1,0 +1,13 @@
+{
+  "id": "mem",
+  "use": ["generic-service"],
+  "service_description": "Free memory",
+  "servicegroups": ["Memory"],
+  "hostgroup_name": "linux",
+  "notification_period": "none",
+  "service_dependencies": ",NRPE",
+  "check_command": "check_mem",
+  "command_line": "$PLUGINSDIR$/check_nrpe",
+  "arguments": ["-H", "$HOSTADDRESS$", "-c", "check_mem"]
+}
+

@@ -1,0 +1,8 @@
+{
+  "id": "Simple-log",
+  "type": "simple_log",
+  "variables": {
+    "path": "/var/log/shinken/shinken.log",
+    "archive_path": "archives/"
+  }
+}

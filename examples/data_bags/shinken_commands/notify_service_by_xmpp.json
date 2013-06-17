@@ -1,0 +1,6 @@
+{
+  "id": "notify_service_by_xmpp",
+  "command_name": "notify_service_by_xmpp",
+  "command": "/usr/local/bin/xmppsend",
+  "arguments": ["-a", "/usr/local/etc/xmppsend.ini", "\"$NOTIFICATIONTYPE$: Service $HOSTNAME$ $SERVICEDESC$ is $SERVICESTATE$: $SERVICEOUTPUT$\"", "$CONTACTPAGER$"]
+}
