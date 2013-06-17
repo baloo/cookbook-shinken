@@ -59,8 +59,21 @@ define host {
 <% if not @process_perf_data.nil? %>
   process_perf_data             <%= @process_perf_data %>
 <% end %>
-
-
+<% if not @notes.nil? %>
+  notes                         <%= @notes %>
+<% end %>
+<% if not @notes_url.nil? %>
+  notes_url                     <%= @notes_url %>
+<% end %>
+<% if not @action_url.nil? %>
+  action_url                    <%= @action_url %>
+<% end %>
+<% if not @icon_image.nil? %>
+  icon_image                    <%= @icon_image %>
+<% end %>
+<% if not @icon_image_alt.nil? %>
+  icon_image_alt                <%= @icon_image_alt %>
+<% end %>
 
   register                      <%= @register ? "1": "0" %>
 
