@@ -7,4 +7,6 @@ version          "2.0.0"
 
 depends "apt"
 depends "nginx"
+depends "mongodb"
+depends "python"
 
