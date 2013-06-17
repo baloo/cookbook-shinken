@@ -59,3 +59,12 @@ template "shinken/broker/ini" do
 end
 
 
+# add the sysadmins to the htpasswd
+users = search(:users, "nagios:* AND password:* NOT action:remove")
+contacts = search(:shinken_contacts, "password:*")
+
+template "/etc/shinken/htpasswd.users" do
+  source "htpasswd.users.erb"
+  mode 0644
+    variables(:users => users + contacts)
+end
