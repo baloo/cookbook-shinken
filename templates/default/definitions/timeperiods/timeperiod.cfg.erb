@@ -15,8 +15,10 @@ define timeperiod {
 <% if not @exclude.nil? %>
   exclude <%= @exclude.join(",") %>
 <% end %>
+<% if not @content.nil? %>
 <% @content.each do |line| %>
   <%= line %>
+<% end %>
 <% end %>
 
 <% if not @register.nil? %>
