@@ -54,7 +54,7 @@ package node["shinken"]["core_package"]
 template "shinken/default/debian" do
   path   "/etc/default/shinken"
   source "default/shinken.erb"
-  mode   "0644"
+  mode   "00644"
 end
 
 template "/etc/init.d/shinken" do
@@ -89,4 +89,6 @@ directory "/etc/shinken/objects" do
   recursive true
 end
 
-cookbook_file "/etc/shinken/resource.cfg"
+cookbook_file "/etc/shinken/resource.cfg" do
+  mode "00644"
+end

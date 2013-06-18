@@ -3,6 +3,7 @@ action :create do
   template "shinken/arbiter/#{template? ? "templates/": ""}notificationway/#{new_resource.notificationway_name}" do
     path full_path
     source "definitions/notificationways/notificationway.cfg.erb"
+    mode 00644
 
     variables({
       :notificationway_name          => new_resource.notificationway_name,

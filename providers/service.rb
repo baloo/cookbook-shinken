@@ -13,6 +13,7 @@ action :create do
   template "shinken/arbiter/#{template? ? "templates/": ""}services/#{new_resource.service_key}" do
     path full_path
     source "definitions/services/service.cfg.erb"
+    mode 00644
 
     vars = {
       :service_key                  => new_resource.service_key,

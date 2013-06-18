@@ -1,8 +1,8 @@
 action :create do
   template "shinken/specific/daemon/#{new_resource.name}" do
     path full_path
-
     source "arbiter/daemon.cfg.erb"
+    mode 00644
 
     variables({
       "daemon_type" => new_resource.daemon_type,

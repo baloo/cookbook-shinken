@@ -3,6 +3,7 @@ action :create do
   template "shinken/arbiter/#{template? ? "templates/": ""}timeperiods/#{new_resource.timeperiod_key}" do
     path full_path
     source "definitions/timeperiods/timeperiod.cfg.erb"
+    mode 00644
 
     variables({
       :timeperiod_key    => new_resource.timeperiod_key,

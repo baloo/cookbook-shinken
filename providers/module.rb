@@ -1,8 +1,8 @@
 action :create do
   template "shinken/specific/module/#{new_resource.name}" do
     path full_path
-
     source "arbiter/module.cfg.erb"
+    mode 00644
 
     variables({
       "module_type" => new_resource.module_type,

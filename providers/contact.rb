@@ -3,6 +3,7 @@ action :create do
   template "shinken/arbiter/#{template? ? "templates/": ""}contacts/#{new_resource.contact_key}" do
     path full_path
     source "definitions/contacts/contact.cfg.erb"
+    mode 00644
 
     variables({
       :contact_key                   => new_resource.contact_key,

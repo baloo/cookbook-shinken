@@ -3,6 +3,7 @@ action :create do
   template "shinken/arbiter/#{template? ? "templates/": ""}servicegroups/#{new_resource.servicegroup_key}" do
     path full_path
     source "definitions/servicegroups/servicegroup.cfg.erb"
+    mode 00644
 
     variables({
       :servicegroup_key   => new_resource.servicegroup_key,

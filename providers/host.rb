@@ -3,6 +3,7 @@ action :create do
   template "shinken/arbiter/#{template? ? "templates/": ""}hosts/#{new_resource.host_key}" do
     path full_path
     source "definitions/hosts/host.cfg.erb"
+    mode 00644
 
     variables({
       :host_key                              => new_resource.host_key,

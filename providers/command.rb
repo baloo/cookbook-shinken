@@ -2,6 +2,7 @@ action :create do
   template "shinken/arbiter/commands/#{new_resource.command_identifier}" do
     path full_path
     source "definitions/commands/command.cfg.erb"
+    mode 00644
 
     variables({
       :command_name => new_resource.command_identifier,
