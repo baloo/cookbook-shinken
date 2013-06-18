@@ -37,36 +37,6 @@ if node['platform_family'] == "debian"
   package "shinken-webui"
 end
 
-### Webui module declaration
-# Store in db
-node.default["shinken"]["broker"]["modules"]["webui"] = {
-  "id" =>   "webui",
-  "modules" => [
-    "apache-passwd"
-  ],
-  "type" => "webui",
-  "variables" => {
-    "allow_html_output" => 0,
-    "auth_secret" =>       "c4c70386a4959a91e3725583f6ce75b40c67e70b1bf144fd49bc6b63f50c33f7",
-    "host" =>              "127.0.0.1",
-    "manage_acl" =>        1,
-    "max_output_length" => 100,
-    "play_sound" =>        0,
-    "port" =>              7767
-  }
-}
-
-# Declare module in broker
-# We'll need to merge with existing modules
-# Proc is here just for namespacing code
-node.override["shinken"]["broker"]["variables"]["modules"] = Proc.new{
-  elts = node.normal["shinken"]["broker"]["variables"]["modules"].split(",").map{|s| s.strip()}
-  elts.push("webui")
-  elts.uniq!
-  elts.join(",")
-}.call
-
-
 ## Reverse proxy
 # We'll now setup a reverse proxy
 include_recipe "nginx"
