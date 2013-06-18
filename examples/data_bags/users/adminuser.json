@@ -1,0 +1,12 @@
+{
+  "id": "adminuser",
+  "password": "$1$put encrypted password here",
+  "groups": [ "sysadmin" ],
+  "uid": 2001,
+  "shell": "\/bin\/bash",
+  "comment": "Example Admin User",
+  "nagios": {
+    "pager": "adminuser@jabber.org",
+    "email": "adminuser@example.com"
+  }
+}
