@@ -37,6 +37,8 @@ else
   default["shinken"]["bin_dir"] = "/usr/bin"
 end
 
+default["shinken"]["log_dir"] = "/var/log/shinken"
+
 default["shinken"]["scheduler"  ]["port"] = 7768
 default["shinken"]["reactionner"]["port"] = 7769
 default["shinken"]["arbiter"    ]["port"] = 7770
