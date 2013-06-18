@@ -24,6 +24,11 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
+### Include base recipe
+# See [shinken::base](base.html)
+
+include_recipe "shinken::base"
+
 package "shinken-poller"
 
 if node[:platform] == "centos"
