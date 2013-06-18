@@ -173,6 +173,7 @@ end
 service "shinken-arbiter" do
   # Ensure it is started by default and running
   action [:enable, :start]
+  ignore_failure true
 
   # If ``/etc/default/shinken`` is changed, we'll restart
   subscribes :restart, "template[shinken/default/debian]", :delayed
