@@ -64,6 +64,7 @@ attribute :icon_image,                   :kind_of => String
 attribute :icon_image_alt,               :kind_of => String
 attribute :vrml_image,                   :kind_of => String
 attribute :statusmap_image,              :kind_of => String
+attribute :poller_tag,                   :kind_of => String
 #attribute :2d_coords,                    x_coord,y_coord
 #attribute :3d_coords,                    x_coord,y_coord,z_coord
 attribute :escalations,                  :kind_of => String

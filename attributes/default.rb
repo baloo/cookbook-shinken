@@ -66,3 +66,5 @@ default["shinken"]["reactionner"]["variables"] = default_variables.merge({
 })
 
 
+
+default["shinken"]["auto_poller_tags"] = false

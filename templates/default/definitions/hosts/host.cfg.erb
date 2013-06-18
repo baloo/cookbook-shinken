@@ -74,6 +74,9 @@ define host {
 <% if not @icon_image_alt.nil? %>
   icon_image_alt                <%= @icon_image_alt %>
 <% end %>
+<% if not @poller_tag.nil? %>
+  poller_tag                    <%= @poller_tag %>
+<% end %>
 <% if not @escalations.nil? %>
   escalations                   <%= @escalations %>
 <% end %>

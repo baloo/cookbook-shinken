@@ -82,6 +82,11 @@ nodes.each do |n|
     host_alias n["fqdn"]
     hostgroups ["+#{n['os']}",n['roles'].join(",")]
 
+    # setup automatic poller tags
+    if node["shinken"]["auto_poller_tags"]
+      poller_tag n["domain"]
+    end
+
     (n["nagios"]["host_definition"]||{}).each_pair do |k, v|
       self.send k, v
     end
