@@ -11,6 +11,9 @@ define service {
 <% if not @host_name.nil? %>
   host_name                     <%= @host_name %>
 <% end %>
+<% if not @hostgroup_name.nil? %>
+  hostgroup_name                <%= @hostgroup_name %>
+<% end %>
 <% if not @service_description.nil? %>
   service_description           <%= @service_description %>
 <% end %>

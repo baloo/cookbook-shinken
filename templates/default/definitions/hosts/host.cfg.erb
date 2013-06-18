@@ -35,6 +35,9 @@ define host {
 <% if not @check_period.nil? %>
   check_period                  <%= @check_period %>
 <% end %>
+<% if not @contacts.nil? %>
+  contacts                      <%= @contacts.join(",") %>
+<% end %>
 <% if not @contact_groups.nil? %>
   contact_groups                <%= @contact_groups.join(",") %>
 <% end %>
