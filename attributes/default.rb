@@ -37,6 +37,8 @@ else
   default["shinken"]["bin_dir"] = "/usr/bin"
 end
 
+default["shinken"]["thruk"]["docroot"] = "/usr/share/thruk/root/thruk/"
+
 default["shinken"]["log_dir"] = "/var/log/shinken"
 
 default["shinken"]["scheduler"  ]["port"] = 7768
@@ -77,5 +79,7 @@ default["shinken"]["reactionner"]["variables"] = default_variables.merge({
 })
 
 
-
+default["shinken"]["cert_name"] = node["fqdn"]
+default["shinken"]["cgi"]["admin_group"] = "admins"
+default["shinken"]["cgi"]["read_groups"] = "all"
 default["shinken"]["auto_poller_tags"] = false
