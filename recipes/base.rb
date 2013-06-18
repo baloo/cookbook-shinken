@@ -57,10 +57,6 @@ template "shinken/default/debian" do
   mode   "00644"
 end
 
-template "/etc/init.d/shinken" do
-  mode 0755
-end
-
 ### Cleanup
 # Remove unused files
 ['brokerd-windows.ini',
@@ -91,4 +87,10 @@ end
 
 cookbook_file "/etc/shinken/resource.cfg" do
   mode "00644"
+end
+
+if node[:platform] == "centos"
+  cookbook_file "/etc/init.d/shinken" do
+    mode "0755"
+  end
 end
