@@ -60,7 +60,7 @@ action :create do
       :service_dependencies         => new_resource.service_dependencies,
 
       :register                     => new_resource.register,
-      :use                          => ((not template?) ? ["base-service"]:[]) + new_resource.use
+      :use                          => new_resource.use
     }
     vars.update({
       :check_command                => command
