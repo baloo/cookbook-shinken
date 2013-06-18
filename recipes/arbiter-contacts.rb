@@ -44,8 +44,14 @@ directory "shinken/arbiter/templates/contacts" do
   path "/etc/shinken/objects-chef/templates/contacts"
 end
 
+directory "shinken/arbiter/contactgroups" do
+  path "/etc/shinken/objects-chef/contactgroups"
+end
+
 ### Save content through run
 node.run_state["shinken"]["arbiter"]["contacts"] = []
+node.run_state["shinken"]["arbiter"]["contactgroups"] = []
+contactgroups = ["all"]
 
 # We'll now populate contacts with real content
 search(:shinken_contact_templates, "*:*") do |n|
@@ -68,6 +74,13 @@ search(:users, "*:*") do |c|
     contact_alias c["name"]
     email c["mail"]
 
+    contactgroups "#{n["groups"].join(',')}"
+    n["groups"].each do |group|
+      if !contactgroups.include?(group)
+        contactgroups << group
+      end
+    end
+
     (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
       self.send k, v
     end
@@ -86,3 +99,10 @@ end
 
 
 
+
+contactgroups.each do |group|
+  shinken_contactgroup group do
+    contactgroup_name group
+    contactgroup_alias group
+  end
+end

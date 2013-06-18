@@ -1,0 +1,26 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+define contactgroup {
+<% if not @register %>
+  name                          <%= @contactgroup_key %>
+<% end %>
+
+<% if not @contactgroup_name.nil? %>
+  contactgroup_name             <%= @contactgroup_name %>
+<% end %>
+<% if not @contactgroup_alias.nil? %>
+  alias                         <%= @contactgroup_alias %>
+<% end %>
+<% if not @members.nil? %>
+  members                       <%= @members.join(",") %>
+<% end %>
+<% if not @realm.nil? %>
+  realm                         <%= @realm %>
+<% end %>
+
+  register                      <%= @register ? "1": "0" %>
+<% if @use %>
+  use                           <%= @use.join(",") %>
+<% end %>
+}
+
