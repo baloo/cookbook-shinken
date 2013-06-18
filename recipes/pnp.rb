@@ -1,3 +1,7 @@
+if node[:platform] == "centos"
+  include_recipe "yum::repoforge"
+end
+
 package "pnp4nagios"
 package "php-fpm"
 
