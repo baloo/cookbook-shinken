@@ -122,6 +122,9 @@ define service {
 <% if not @escalations.nil? %>
   escalations                   <%= @escalations %>
 <% end %>
+<% if not @service_dependencies.nil? %>
+  service_dependencies          <%= @service_dependencies %>
+<% end %>
   register                      <%= @register ? "1": "0" %>
 <% if @use %>
   use                           <%= @use.join(",") %>

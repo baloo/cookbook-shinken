@@ -57,6 +57,7 @@ action :create do
       :icon_image                   => new_resource.icon_image,
       :icon_image_alt               => new_resource.icon_image_alt,
       :escalations                  => new_resource.escalations,
+      :service_dependencies         => new_resource.service_dependencies,
 
       :register                     => new_resource.register,
       :use                          => ((not template?) ? ["base-service"]:[]) + new_resource.use
