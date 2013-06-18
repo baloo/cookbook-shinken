@@ -76,14 +76,17 @@ nodes.sort! {|a,b| a.name <=> b.name }
 # We'll now populate hosts with real content
 nodes.each do |n|
   # we'll use shinken_host LWRP to define host
-  shinken_host n["fqdn"] do
-    host_name n["fqdn"]
-    address n["fqdn"]
-    (n["monitoring"]["host_definition"]||{}).each_pair do |k, v|
+  shinken_host n["hostname"] do
+    host_name n["hostname"]
+    address n["ipaddress"]
+    host_alias n["fqdn"]
+    hostgroups ["+#{n['os']}",n['roles'].join(",")]
+
+    (n["nagios"]["host_definition"]||{}).each_pair do |k, v|
       self.send k, v
     end
 
-    if (n["monitoring"]["host_definition"]|| {})["use"].nil?
+    if (n["nagios"]["host_definition"]|| {})["use"].nil?
       use ["generic-host"]
     end
   end
