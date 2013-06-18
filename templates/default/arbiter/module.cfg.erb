@@ -4,7 +4,7 @@ define module {
   module_name    <%= @name %>
   module_type    <%= @module_type %>
 
-<% Hash.new(@variables.to_a.sort).each do |key, value| %>
+<% @variables.to_a.sort.each do |key, value| %>
   <%= key %>  <%= value %>
 <% end %>
 
