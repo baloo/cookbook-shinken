@@ -2,7 +2,8 @@ action :create do
 
   if not template?
     command = shinken_command "shinken/arbiter/services/#{new_resource.service_key}/command" do
-      command new_resource.check_command
+      command_name new_resource.check_command
+      command new_resource.command_line
       arguments new_resource.arguments
     end
     Chef::Log.info(command.command_identifier)

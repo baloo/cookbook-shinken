@@ -32,6 +32,7 @@ attribute :display_name,                 :kind_of => String
 attribute :servicegroups,                :kind_of => Array
 attribute :is_volatile,                  :kind_of => [TrueClass, FalseClass]
 attribute :check_command,                :kind_of => String
+attribute :command_line,                 :kind_of => String
 attribute :arguments,                    :kind_of => Array
 attribute :initial_state,                :callbacks => validation_callback([:ok, :warning, :unknown, :critical], false)
 attribute :max_check_attempts,           :kind_of => Integer
