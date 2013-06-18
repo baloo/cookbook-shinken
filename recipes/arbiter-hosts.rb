@@ -52,8 +52,29 @@ end
 node.run_state["shinken"]["arbiter"]["hosts"] = []
 
 ### Populate
+# Templates first
+host_templates = search(:shinken_host_templates, "*:*") 
+host_templates.sort! {|a,b| a.name <=> b.name }
+
+host_templates.each do |n|
+  # we'll use shinken_host LWRP to define host
+  shinken_host n["id"] do
+    # We wont register templates
+    register false
+
+    n.delete_if{|k, v| k == "id"}.each_pair do |k, v|
+      self.send k, v
+    end
+
+  end
+end
+
+# sort the hosts to prevent extra reloads
+nodes = search(:node, "roles:monitoring")
+nodes.sort! {|a,b| a.name <=> b.name }
+
 # We'll now populate hosts with real content
-search(:node, "monitoring:*") do |n|
+nodes.each do |n|
   # we'll use shinken_host LWRP to define host
   shinken_host n["fqdn"] do
     host_name n["fqdn"]
@@ -68,18 +89,15 @@ search(:node, "monitoring:*") do |n|
   end
 end
 
-# We'll now populate hosts with real content
-search(:shinken_host_templates, "*:*") do |n|
-  # we'll use shinken_host LWRP to define host
-  shinken_host n["id"] do
-    # We wont register templates
-    register false
+# add the manual hosts
+hosts = search(:shinken_hosts, "*:*") 
+hosts.sort! {|a,b| a.name <=> b.name }
 
+hosts.each do |n|
+  # we'll use shinken_host LWRP to define host
+  shinken_host n["host_name"] do
     n.delete_if{|k, v| k == "id"}.each_pair do |k, v|
       self.send k, v
     end
-
   end
 end
-
-
