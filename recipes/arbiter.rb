@@ -80,7 +80,12 @@ node.run_state["shinken"]["arbiter"]["modules"] = []
     shinken_daemon "#{daemon}-#{n[:fqdn]}" do
       daemon_type daemon
 
-      address n["fqdn"]
+      if n["shinken"][daemon.to_s]["ipaddress"].nil?
+        address n["ipaddress"]
+      else
+        address n["shinken"][daemon.to_s]["ipaddress"]
+      end
+
       port n["shinken"][daemon.to_s]["port"]
 
       variables n["shinken"][daemon.to_s]["variables"]
