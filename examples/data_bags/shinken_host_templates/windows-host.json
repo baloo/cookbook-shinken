@@ -1,6 +1,6 @@
 {
   "id": "windows-host",
-  "use": ["generic-service"],
+  "use": ["generic-host"],
   "hostgroups": ["windows"],
   "icon_image": "win40.png",
   "icon_image_alt": "Windows"

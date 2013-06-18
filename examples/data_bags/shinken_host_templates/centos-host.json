@@ -1,6 +1,6 @@
 {
   "id": "centos-host",
-  "use": ["generic-service"],
+  "use": ["generic-host"],
   "hostgroups": ["+linux", "centos"],
   "icon_image": "centos.png",
   "icon_image_alt": "Centos"
