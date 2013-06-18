@@ -66,6 +66,32 @@ search(:shinken_contact_templates, "*:*") do |n|
   end
 end
 
+search(:shinken_contacts, "*:*") do |n|
+  # we'll use shinken_host LWRP to define host
+  shinken_contact n["id"] do
+
+    contact_name n["id"]
+    contact_alias n["comment"]
+    email n["email"]
+    contactgroups "#{n["groups"].join(',')}"
+    n["groups"].each do |group|
+      if !contactgroups.include?(group)
+        contactgroups << group
+      end
+    end
+
+    (n["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
+      self.send k, v
+    end
+
+    if n.has_key?("use")
+      use n["use"]
+    else
+      use ["generic-contact"]
+    end
+  end
+end
+
 search(:users, "*:*") do |c|
   shinken_contact c["id"] do
     register true
