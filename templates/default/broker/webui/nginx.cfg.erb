@@ -13,6 +13,20 @@ server {
     proxy_set_header Host            $host;
     proxy_set_header X-Forwarded-For $remote_addr;
   }
+  location /pnp4nagios {
+    alias /usr/share/nagios/html/pnp4nagios/;
+  }
+
+  location ~ ^(/pnp4nagios.*\.php)(.*)$ {
+    root /usr/share/nagios/html/pnp4nagios/;
+    include /etc/nginx/fastcgi_params;
+    fastcgi_split_path_info ^(.+\.php)(.*)$;
+    fastcgi_param PATH_INFO $fastcgi_path_info;
+
+    fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+    fastcgi_pass 127.0.0.1:9000;
+  }
+
 }
 
 
