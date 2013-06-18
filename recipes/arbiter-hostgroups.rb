@@ -43,6 +43,19 @@ end
 ### Save content through run
 node.run_state["shinken"]["arbiter"]["hostgroups"] = []
 
+# find roles and create hostgroup for each role
+hostgroups = Array.new
+
+search(:role, "*:*") do |r|
+  hostgroups << r.name
+end
+
+hostgroups.sort.each do |hg|
+  shinken_hostgroup hg do
+    hostgroup_name hg
+    hostgroup_alias hg
+  end
+end
 
 # We'll now populate hostgroups with real content
 search(:shinken_hostgroups, "*:*") do |n|
@@ -53,6 +66,3 @@ search(:shinken_hostgroups, "*:*") do |n|
     end
   end
 end
-
-
-
