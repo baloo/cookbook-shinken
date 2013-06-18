@@ -92,16 +92,17 @@ search(:shinken_contacts, "*:*") do |n|
   end
 end
 
-search(:users, "*:*") do |c|
+search(:users, "nagios:* NOT action:remove") do |c|
   shinken_contact c["id"] do
     register true
 
     contact_name c["id"]
-    contact_alias c["name"]
-    email c["mail"]
+    contact_alias c["comment"]
+    email c["nagios"]["email"]
+    pager c["nagios"]["pager"] if c["nagios"].has_key?("pager")
 
-    contactgroups "#{n["groups"].join(',')}"
-    n["groups"].each do |group|
+    contactgroups "#{c["groups"].join(',')}"
+    c["groups"].each do |group|
       if !contactgroups.include?(group)
         contactgroups << group
       end
@@ -111,7 +112,7 @@ search(:users, "*:*") do |c|
       self.send k, v
     end
 
-    if c["admin"] == true
+    if c["groups"].include?("sysadmin")
       if c["oncall"] == true
         use ["oncall", "admin"]
       else
@@ -122,9 +123,6 @@ search(:users, "*:*") do |c|
     end
   end
 end
-
-
-
 
 contactgroups.each do |group|
   shinken_contactgroup group do
