@@ -19,6 +19,7 @@ action :create do
       :check_interval                        => new_resource.check_interval,
       :active_checks_enabled                 => new_resource.active_checks_enabled,
       :check_period                          => new_resource.check_period,
+      :contacts                              => new_resource.contacts,
       :contact_groups                        => new_resource.contact_groups,
       :notification_interval                 => new_resource.notification_interval,
       :notification_period                   => new_resource.notification_period,
@@ -27,6 +28,11 @@ action :create do
       :event_handler_enabled                 => new_resource.event_handler_enabled,
       :flap_detection_enabled                => new_resource.flap_detection_enabled,
       :process_perf_data                     => new_resource.process_perf_data,
+      :notes                                 => new_resource.notes,
+      :notes_url                             => new_resource.notes_url,
+      :action_url                            => new_resource.action_url,
+      :icon_image                            => new_resource.icon_image,
+      :icon_image_alt                        => new_resource.icon_image_alt,
 
       :use                                   => new_resource.use
     })
