@@ -49,7 +49,10 @@ node.run_state["shinken"]["arbiter"]["services"] = []
 
 ### Populate
 # We'll now populate services with templates
-search(:shinken_service_templates, "*:*") do |s|
+service_templates = search(:shinken_service_templates, "*:*")
+service_templates.sort! {|a,b| a.name <=> b.name }
+
+service_templates.each do |s|
   shinken_service s["id"] do
     # We wont register templates
     register false
@@ -60,19 +63,29 @@ search(:shinken_service_templates, "*:*") do |s|
   end
 end
 
-# We'll now populate services with real content
-search(:node, "monitoring:*") do |n|
-  (n["monitoring"]["checks"]|| {}).each_pair do |service_key, service|
-    # we'll use shinken_host LWRP to define host
-    shinken_service "#{n["fqdn"]}/#{service_key}" do
-      host_name n["fqdn"]
-      service_key service_key
+servicegroups = []
+services = search(:shinken_services, "*:*")
+services.sort! {|a,b| a.name <=> b.name }
 
-      service.each_pair do |k, v|
-        self.send k, v
+services.each do |s|
+  shinken_service s["id"] do
+    register true
+
+    s["servicegroups"].each do |group|
+      if !servicegroups.include?(group)
+        servicegroups << group
       end
+    end
+
+    s.delete_if{|k, v| k == "id"}.each_pair do |k, v|
+      self.send k, v
     end
   end
 end
 
-
+servicegroups.each do |group|
+  shinken_servicegroup group do
+    servicegroup_name group
+    servicegroup_alias group
+  end
+end
