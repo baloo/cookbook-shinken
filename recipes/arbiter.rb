@@ -154,6 +154,7 @@ template "shinken/arbiter/ini" do
     :command_files => node.run_state["shinken"]["arbiter"]["commands"],
     :contact_files => node.run_state["shinken"]["arbiter"]["contacts"],
     :timeperiod_files => node.run_state["shinken"]["arbiter"]["timeperiods"],
+    :escalation_files => node.run_state["shinken"]["arbiter"]["escalations"],
     :notiticationway_files => node.run_state["shinken"]["arbiter"]["notificationways"]
   })
 
