@@ -58,8 +58,17 @@ default_variables = {
 
 default["shinken"]["scheduler"  ]["variables"] = default_variables
 default["shinken"]["arbiter"    ]["variables"] = default_variables
-default["shinken"]["poller"     ]["variables"] = default_variables
-default["shinken"]["broker"     ]["variables"] = default_variables
+default["shinken"]["poller"     ]["variables"] = default_variables.merge({
+  "manage_sub_realms"   => 0,
+  "min_workers"         => 0,
+  "max_workers"         => 0,
+  "processes_by_worker" => 256,
+  "polling_interval"    => 1
+})
+default["shinken"]["broker"     ]["variables"] = default_variables.merge({
+  "manage_sub_realms"   => 1,
+  "manage_arbiters"     => 1
+})
 default["shinken"]["receiver"   ]["variables"] = default_variables
 default["shinken"]["reactionner"]["variables"] = default_variables.merge({
   "manage_sub_realms" => 0,
