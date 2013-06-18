@@ -119,6 +119,9 @@ define service {
 <% if not @icon_image_alt.nil? %>
   icon_image_alt                <%= @icon_image_alt %>
 <% end %>
+<% if not @escalations.nil? %>
+  escalations                   <%= @escalations %>
+<% end %>
   register                      <%= @register ? "1": "0" %>
 <% if @use %>
   use                           <%= @use.join(",") %>

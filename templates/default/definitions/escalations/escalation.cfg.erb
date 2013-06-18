@@ -1,0 +1,34 @@
+# This file is dropped off by chef, any local changes will be overwritten
+
+define escalation {
+  escalation_name               <%= @escalation_key %>
+
+<% if not @first_notification.nil? %>
+  first_notification            <%= @first_notification %>
+<% end %>
+<% if not @last_notification.nil? %>
+  last_notification             <%= @last_notification %>
+<% end %>
+<% if not @first_notification_time.nil? %>
+  first_notification_time       <%= @first_notification_time %>
+<% end %>
+<% if not @last_notification_time.nil? %>
+  last_notification_time        <%= @last_notification_time %>
+<% end %>
+<% if not @notification_interval.nil? %>
+  notification_interval         <%= @notification_interval %>
+<% end %>
+<% if not @escalation_period.nil? %>
+  escalation_period             <%= @escalation_period %>
+<% end %>
+<% if not @escalation_options.nil? %>
+  escalation_options            <%= @escalation_options.map{|e| e.to_s[0,1]}.join(",") %>
+<% end %>
+<% if not @contacts.nil? and not @contacts.empty? %>
+  contacts                      <%= @contacts.join(",") %>
+<% end %>
+<% if not @contact_groups.nil? %>
+  contact_groups                <%= @contact_groups.join(",") %>
+<% end %>
+}
+

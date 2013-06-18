@@ -66,6 +66,7 @@ attribute :vrml_image,                   :kind_of => String
 attribute :statusmap_image,              :kind_of => String
 #attribute :2d_coords,                    x_coord,y_coord
 #attribute :3d_coords,                    x_coord,y_coord,z_coord
+attribute :escalations,                  :kind_of => String
 
 attribute :register,                     :kind_of => [TrueClass, FalseClass], :default => true
 attribute :use,                          :kind_of => Array

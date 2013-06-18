@@ -33,6 +33,7 @@ action :create do
       :action_url                            => new_resource.action_url,
       :icon_image                            => new_resource.icon_image,
       :icon_image_alt                        => new_resource.icon_image_alt,
+      :escalations                           => new_resource.escalations,
 
       :use                                   => new_resource.use
     })

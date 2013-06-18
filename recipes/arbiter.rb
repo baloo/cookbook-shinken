@@ -138,6 +138,7 @@ include_recipe "shinken::arbiter-hostgroups"
 include_recipe "shinken::arbiter-hosts"
 include_recipe "shinken::arbiter-servicegroups"
 include_recipe "shinken::arbiter-services"
+include_recipe "shinken::arbiter-escalations"
 
 #### Main configuration file
 

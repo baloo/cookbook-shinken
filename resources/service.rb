@@ -66,6 +66,7 @@ attribute :notes_url,                    :kind_of => String
 attribute :action_url,                   :kind_of => String
 attribute :icon_image,                   :kind_of => String
 attribute :icon_image_alt,               :kind_of => String
+attribute :escalations,                  :kind_of => String
 
 attribute :register,                     :kind_of => [TrueClass, FalseClass], :default => true
 attribute :use,                          :kind_of => Array, :default => []

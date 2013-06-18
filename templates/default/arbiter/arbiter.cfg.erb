@@ -210,3 +210,8 @@ cfg_file=objects-chef/<%= nwf %>
 <% @timeperiod_files.each do |tpf| %>
 cfg_file=objects-chef/<%= tpf %>
 <% end %>
+
+## Escalations
+<% @escalation_files.each do |esf| %>
+cfg_file=objects-chef/<%= esf %>
+<% end %>
