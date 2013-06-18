@@ -92,7 +92,7 @@ nodes.each do |n|
     end
 
     if (n["nagios"]["host_definition"]|| {})["use"].nil?
-      use ["generic-host"]
+      use ["#{n['platform']}-host"]
     end
   end
 end
