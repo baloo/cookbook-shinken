@@ -7,7 +7,6 @@ version          "2.0.0"
 
 depends "apt"
 depends "nginx"
-depends "mongodb", " >= 0.12"
+depends "mongodb", ">= 0.12"
 depends "python"
-depends "apache2"
 depends "yum"
