@@ -76,8 +76,4 @@ default["shinken"]["reactionner"]["variables"] = default_variables.merge({
   "max_workers"       => 15
 })
 
-
-default["shinken"]["cert_name"] = node["fqdn"]
-default["shinken"]["cgi"]["admin_group"] = "admins"
-default["shinken"]["cgi"]["read_groups"] = "all"
 default["shinken"]["auto_poller_tags"] = false
