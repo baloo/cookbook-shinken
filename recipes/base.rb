@@ -80,6 +80,8 @@ end
   end
 end
 
+directory "/etc/shinken/packs"
+
 directory "/etc/shinken/objects" do
   action :delete
   recursive true
