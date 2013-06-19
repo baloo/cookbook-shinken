@@ -90,7 +90,11 @@ cookbook_file "/etc/shinken/resource.cfg" do
 end
 
 if node[:platform] == "centos"
+
   cookbook_file "/etc/init.d/shinken" do
     mode "0755"
   end
+
+  package "python-ldap"
+
 end
