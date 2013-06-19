@@ -2,7 +2,7 @@ name "shinken"
 description "Monitoring server"
 run_list "role[monitoring]", "recipe[shinken::mongodb]", "recipe[mongodb]", 
 "recipe[shinken::pnp]","role[shinken_poller]", "recipe[shinken::reactionner]", 
-"recipe[shinken::scheduler]", "recipe[shinken::broker]", "recipe[shinken::thruk]", 
+"recipe[shinken::scheduler]", "recipe[shinken::broker]", "recipe[shinken::broker-webui]", 
 "recipe[shinken::receiver]",  "recipe[shinken::arbiter]", "recipe[shinken::plugins]",
 "recipe[shinken::xmpp]"
 

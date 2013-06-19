@@ -37,8 +37,6 @@ else
   default["shinken"]["bin_dir"] = "/usr/bin"
 end
 
-default["shinken"]["thruk"]["docroot"] = "/usr/share/thruk/root/thruk/"
-
 default["shinken"]["log_dir"] = "/var/log/shinken"
 
 default["shinken"]["scheduler"  ]["port"] = 7768
