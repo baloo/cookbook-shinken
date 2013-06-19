@@ -87,11 +87,15 @@ nodes.each do |n|
       poller_tag n["domain"]
     end
 
-    (n["nagios"]["host_definition"]||{}).each_pair do |k, v|
-      self.send k, v
-    end
+    if n.has_key?("nagios")
+      (n["nagios"]["host_definition"]||{}).each_pair do |k, v|
+        self.send k, v
+      end
 
-    if (n["nagios"]["host_definition"]|| {})["use"].nil?
+      if (n["nagios"]["host_definition"]|| {})["use"].nil?
+        use ["#{n['platform']}-host"]
+      end
+    else
       use ["#{n['platform']}-host"]
     end
   end
