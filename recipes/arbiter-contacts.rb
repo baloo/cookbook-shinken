@@ -91,6 +91,8 @@ search(:users, "zenexity-internal:true") do |c|
     pager pager_number unless pager_number.nil?
     email c["mail"]
 
+    notificationways  ["sms", "email"]
+
     (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
       self.send k, v
     end
@@ -103,6 +105,8 @@ search(:users, "zenexity-internal:true") do |c|
     contact_name "#{c["id"]}-sms"
     contact_alias c["name"]
     pager pager_number unless pager_number.nil?
+
+    notificationways  ["sms"]
 
     (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
       self.send k, v
@@ -117,6 +121,8 @@ search(:users, "zenexity-internal:true") do |c|
     contact_name "#{c["id"]}-email"
     contact_alias c["name"]
     email c["mail"]
+
+    notificationways  ["email"]
 
     (c["shinken"]|| {}).delete_if{|k,v| k == "id"}.each_pair do |k,v|
       self.send k, v
