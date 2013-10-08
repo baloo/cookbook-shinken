@@ -26,7 +26,7 @@ end
 attribute :service_key,                  :kind_of => String, :name_attribute => true
 
 attribute :host_name,                    :kind_of => String
-attribute :hostgroup_name,               :kind_of => String
+attribute :hostgroup_name,               :kind_of => Array
 attribute :service_description,          :kind_of => String
 attribute :display_name,                 :kind_of => String
 attribute :servicegroups,                :kind_of => Array
