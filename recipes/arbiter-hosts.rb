@@ -80,11 +80,19 @@ nodes.each do |n|
     host_name n["hostname"]
     address n["ipaddress"]
     host_alias n["fqdn"]
-    hostgroups ["+#{n['os']}",n['roles'].join(",")]
+    if n["virtualization"].has_key?("role")
+      hostgroups ["+#{n['os']}","#{n['virtualization']['system']}-#{n['virtualization']['role']}",n['roles'].join(",")]
+    else
+      hostgroups ["+#{n['os']}",n['roles'].join(",")]
+    end
 
     # setup automatic poller tags
     if node["shinken"]["auto_poller_tags"]
-      poller_tag n["domain"]
+      if n.has_key?("shinken") and n["shinken"].has_key?("poller_tag")
+        poller_tag n["shinken"]["poller_tag"]
+        else
+        poller_tag n["domain"]
+      end
     end
 
     if n.has_key?("nagios")
