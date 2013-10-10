@@ -12,7 +12,7 @@ define service {
   host_name                     <%= @host_name %>
 <% end %>
 <% if not @hostgroup_name.nil? %>
-  hostgroup_name                <%= @hostgroup_name %>
+  hostgroup_name                <%= @hostgroup_name.join(",") %>
 <% end %>
 <% if not @service_description.nil? %>
   service_description           <%= @service_description %>
