@@ -92,7 +92,7 @@ search(:shinken_contacts, "*:*") do |n|
   end
 end
 
-search(:users, "nagios:* NOT action:remove") do |c|
+search(:users, "nagios:* AND NOT action:remove") do |c|
   shinken_contact c["id"] do
     register true
 

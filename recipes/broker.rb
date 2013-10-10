@@ -60,7 +60,7 @@ end
 
 
 # add the sysadmins to the htpasswd
-users = search(:users, "nagios:* AND password:* NOT action:remove")
+users = search(:users, "nagios:* AND password:* AND NOT action:remove")
 contacts = search(:shinken_contacts, "password:*")
 
 template "/etc/shinken/htpasswd.users" do
