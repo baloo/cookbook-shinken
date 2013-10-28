@@ -128,6 +128,9 @@ define service {
 <% if not @service_dependencies.nil? %>
   service_dependencies          <%= @service_dependencies %>
 <% end %>
+<% if not @business_impact.nil? %>
+  business_impact		<%= @business_impact %>
+<% end %>
   register                      <%= @register ? "1": "0" %>
 <% if @use %>
   use                           <%= @use.join(",") %>
