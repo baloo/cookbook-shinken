@@ -58,6 +58,7 @@ action :create do
       :icon_image_alt               => new_resource.icon_image_alt,
       :escalations                  => new_resource.escalations,
       :service_dependencies         => new_resource.service_dependencies,
+      :business_impact              => new_resource.business_impact,
 
       :register                     => new_resource.register,
       :use                          => new_resource.use
