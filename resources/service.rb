@@ -68,7 +68,7 @@ attribute :icon_image,                   :kind_of => String
 attribute :icon_image_alt,               :kind_of => String
 attribute :escalations,                  :kind_of => String
 attribute :service_dependencies,         :kind_of => String
-attribute :business_impact,              :callbacks => validation_callback([0, 1, 2, 3, 4, 5])
+attribute :business_impact,              :kind_of => Integer
 
 attribute :register,                     :kind_of => [TrueClass, FalseClass], :default => true
 attribute :use,                          :kind_of => Array, :default => []
